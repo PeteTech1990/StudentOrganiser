@@ -1,0 +1,64 @@
+﻿Assignment brief - summary
+==============================
+
+Create the mobile application based on the design screens I created in assignment 2. Create and test each page. App requires functionality beyond simple navigation.
+Lots of data not required - dummy data would be fine for now.
+
+
+Assignment brief - checklist
+===================================
+
+Application requirements
+------------------------
+1. Application must be able to show the timetable for the student, in a calendar view
+2. Application must show the details of lesson, when a calendar lesson is tapped on
+2. Application must have a navgiation bar allowing switching between the 5 pages
+3. Application must allow users to view their location on a campus map
+4. Application must allow users to select from various locations in a list
+5. Application must show users a navigation path from their current location to the selected destination
+6. Application must show the student's "to-do list"
+7. Application must allow users to add tasks to the todo list - and allow assignment of a due date, recurrence, subject and/or priority
+8. Application must allow users to sort tasks based on subject, due date or priority
+9. Application must allows users to "check-off" a task that is done
+10. Application must automatically recreate a task if it has been assigned a recurrence
+11. Application must allow users to delete a task
+12. Application must allow users to view task details in a modal, when they tap on a task
+13. Application must allow users to view their notes
+14. Application must allow users to delete a note
+15. Application must allow users to create a "text" note
+16. Application must allow users to create a "video" note, linking to a youtube URL
+17. Application must allow users to create a "video" note, embedding a local video
+18. Application must allow users to record an "audio" note
+19. Application must allow users to classify a note with a "subject"
+20. Application must allow users to sort their notes by creation date or by subject
+21. Application must display a dynamic QR code student ID, encoding the student's ID number and the current date within it
+22. Application must display the student's name and ID name under the QR code
+23. Application must allow the user to re-generate the QR code
+
+
+Other Requirements
+-----------------------
+1. Create the application and submit as an apk file
+2. Create and fill in a testing table
+3. Write a review of the application, noting its strengths and weaknesses
+4. Create a video demonstrating the functionality of the app
+
+
+Higher grades for
+------------------------
+1. 
+
+Other ideas
+----------------------
+
+
+Learning Outcomes
+----------------------
+1. Develop a mobile application to a given scenario.
+
+2. Devise and use a test plan to carry out application testing. 
+
+3. Review the strengths and weaknesses of the completed solution.
+
+Distinction Criteria
+-----------------------
