@@ -34,6 +34,7 @@ Application requirements
 21. Application must display a dynamic QR code student ID, encoding the student's ID number and the current date within it
 22. Application must display the student's name and ID name under the QR code
 23. Application must allow the user to re-generate the QR code
+24. Application should create notifications for tasks and lessons that are due now.
 
 
 Other Requirements
