@@ -44,9 +44,6 @@ Other Requirements
 4. Create a video demonstrating the functionality of the app
 
 
-Higher grades for
-------------------------
-1. 
 
 Other ideas
 ----------------------
@@ -60,5 +57,19 @@ Learning Outcomes
 
 3. Review the strengths and weaknesses of the completed solution.
 
+
 Distinction Criteria
 -----------------------
+Knowledge & Understanding (15) - Excellent knowledge and depth of understanding of principles and concepts.  Appropriate code and data types used. Very minor or no errors in syntax or efficiency.
+
+Code Structure (20) - Structure, layout and style excellent overall with the addition of elucidated comments.
+
+Clarity of programs (20) - Clear and polite to user with regards to inputs and outputs. 
+
+Final Program (15) - Excellent app showing a good level of imagination.  Original content presented with a creative flair.  App is robust and works well.
+Testing (15)
+Considerable testing showing clear documentation of all program paths. 
+Presentation, grammar and spelling (15)
+Work presented in a professional manner with no errors in regards to spelling and grammar.
+
+
