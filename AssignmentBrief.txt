@@ -67,9 +67,9 @@ Code Structure (20) - Structure, layout and style excellent overall with the add
 Clarity of programs (20) - Clear and polite to user with regards to inputs and outputs. 
 
 Final Program (15) - Excellent app showing a good level of imagination.  Original content presented with a creative flair.  App is robust and works well.
-Testing (15)
-Considerable testing showing clear documentation of all program paths. 
-Presentation, grammar and spelling (15)
-Work presented in a professional manner with no errors in regards to spelling and grammar.
+
+Testing (15) - Considerable testing showing clear documentation of all program paths. 
+
+Presentation, grammar and spelling (15) - Work presented in a professional manner with no errors in regards to spelling and grammar.
 
 
