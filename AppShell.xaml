@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="StudentOrganiser.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:StudentOrganiser.Pages"
+    Shell.FlyoutBehavior="Disabled"
+    Title="StudentOrganiser">
+
+    <TabBar>
+        <Tab Title="To do list">
+            <ShellContent        
+                    ContentTemplate="{DataTemplate local:ToDoList}"
+            Route="ToDoList" />
+        </Tab>
+        <Tab Title="Calendar">
+            <ShellContent ContentTemplate="{DataTemplate local:Calendar}"/>
+        </Tab>
+    </TabBar>
+    
+
+</Shell>
