@@ -14,7 +14,10 @@
     <MauiXaml Update="Pages\Calendar.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\TodoTaskView.xaml">
+    <MauiXaml Update="Pages\TaskDetails.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Pages\TodoTaskView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

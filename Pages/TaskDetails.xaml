@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganiser.Pages.TaskDetails"             
+             BackgroundColor="Transparent">
+    <Grid HeightRequest="300" WidthRequest="300" BackgroundColor="AliceBlue" ColumnDefinitions="2*,*" RowDefinitions="*, 2*, *">
+        
+        
+        <Label x:Name="TaskTitle" Grid.Row="0" Grid.Column="0" TextColor="Black" Padding="20" FontSize="20" FontAttributes="Bold"></Label>
+        <Label x:Name="TaskPriority" TextColor="Red" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="End" Padding="20"></Label>
+
+
+        <Label x:Name="TaskDescription" Grid.Row="1" Grid.ColumnSpan="2" Padding="20"></Label>
+
+        <Label x:Name="TaskSubject" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="End" Padding="20"></Label>
+        <Label x:Name="TaskDueDate" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="End" Padding="20"></Label>
+        
+    </Grid>
+</ContentPage>

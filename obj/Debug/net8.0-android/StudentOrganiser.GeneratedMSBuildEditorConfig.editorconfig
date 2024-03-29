@@ -34,11 +34,23 @@ build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.Cal
 build_metadata.AdditionalFiles.TargetPath = Pages\Calendar.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\Calendar.xaml
 
+[C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/TaskDetails.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.TaskDetails.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\TaskDetails.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\TaskDetails.xaml
+
 [C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/ToDoList.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.ToDoList.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\ToDoList.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\ToDoList.xaml
+
+[C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/TodoTaskView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.TodoTaskView.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\TodoTaskView.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\TodoTaskView.xaml
 
 [C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
@@ -51,9 +63,3 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
-
-[C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Views/TodoTaskView.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Views.TodoTaskView.xaml
-build_metadata.AdditionalFiles.TargetPath = Views\TodoTaskView.xaml
-build_metadata.AdditionalFiles.RelativePath = Views\TodoTaskView.xaml

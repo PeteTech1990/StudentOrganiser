@@ -8,12 +8,12 @@
     Title="StudentOrganiser">
 
     <TabBar>
-        <Tab Title="To do list">
+        <Tab Icon="todolist.png">
             <ShellContent        
                     ContentTemplate="{DataTemplate local:ToDoList}"
             Route="ToDoList" />
         </Tab>
-        <Tab Title="Calendar">
+        <Tab Icon="calendar.png">
             <ShellContent ContentTemplate="{DataTemplate local:Calendar}"/>
         </Tab>
     </TabBar>
