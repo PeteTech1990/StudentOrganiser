@@ -224,7 +224,6 @@ C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-androi
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\assets\System.Numerics.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\assets\System.Numerics.Vectors.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\assets\System.ObjectModel.dll
-C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\assets\System.Private.CoreLib.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\assets\System.Private.DataContractSerialization.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\assets\System.Private.Uri.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\assets\System.Private.Xml.dll
@@ -1110,3 +1109,4 @@ C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-androi
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\src\mono\com\google\android\gms\tasks\OnFailureListenerImplementor.java
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\src\mono\com\google\android\gms\tasks\OnSuccessListenerImplementor.java
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\src\mono\com\google\android\gms\tasks\OnTokenCanceledListenerImplementor.java
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\assets\System.Private.CoreLib.dll
