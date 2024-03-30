@@ -16,6 +16,9 @@
         <Tab Icon="calendar.png">
             <ShellContent ContentTemplate="{DataTemplate local:Calendar}"/>
         </Tab>
+        <Tab Icon="maps.png">
+            <ShellContent ContentTemplate="{DataTemplate local:CampusMap}"/>
+        </Tab>
     </TabBar>
     
 

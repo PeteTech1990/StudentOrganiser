@@ -30,6 +30,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.Cal
 build_metadata.AdditionalFiles.TargetPath = Pages\Calendar.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\Calendar.xaml
 
+[C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/CampusMap.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.CampusMap.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\CampusMap.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\CampusMap.xaml
+
 [C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/TaskDetails.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.TaskDetails.xaml
