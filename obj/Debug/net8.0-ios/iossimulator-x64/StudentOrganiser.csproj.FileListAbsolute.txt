@@ -259,7 +259,6 @@ C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\io
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet-nativeaot.a
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet.a
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
-C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-ios\iossimulator-x64\build-signature\signature
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-ios\iossimulator-x64\mauiimage.inputs
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-ios\iossimulator-x64\mauifont.inputs
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-ios\iossimulator-x64\mauisplash.inputs
@@ -320,3 +319,5 @@ C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-ios\io
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-ios\iossimulator-x64\StudentOrganiser.pdb
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-ios\iossimulator-x64\StudentOrganiser.genruntimeconfig.cache
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-ios\iossimulator-x64\ref\StudentOrganiser.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\Microsoft.Maui.Controls.Maps.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\Microsoft.Maui.Maps.dll

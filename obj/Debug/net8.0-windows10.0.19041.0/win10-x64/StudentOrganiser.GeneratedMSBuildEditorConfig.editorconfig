@@ -36,6 +36,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.Cam
 build_metadata.AdditionalFiles.TargetPath = Pages\CampusMap.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\CampusMap.xaml
 
+[C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/StudentID.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.StudentID.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\StudentID.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\StudentID.xaml
+
 [C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/TaskDetails.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.TaskDetails.xaml

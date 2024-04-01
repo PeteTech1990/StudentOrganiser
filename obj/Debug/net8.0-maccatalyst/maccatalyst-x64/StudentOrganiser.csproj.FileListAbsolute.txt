@@ -307,3 +307,5 @@ C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-maccat
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\StudentOrganiser.pdb
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\StudentOrganiser.genruntimeconfig.cache
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\ref\StudentOrganiser.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Controls.Maps.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Maps.dll
