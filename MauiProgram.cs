@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using StudentOrganiser.Classes;
+using StudentOrganiser.Pages;
 
 namespace StudentOrganiser
 {
@@ -10,6 +12,7 @@ namespace StudentOrganiser
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -22,6 +25,7 @@ namespace StudentOrganiser
 
             string dbPath = FileSystem.AppDataDirectory + "/studentOrgDB.db3";
             builder.Services.AddSingleton<DBConnect>(s => ActivatorUtilities.CreateInstance<DBConnect>(s, dbPath));
+
 #endif
 
             return builder.Build();

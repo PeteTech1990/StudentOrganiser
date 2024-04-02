@@ -9,10 +9,10 @@ namespace StudentOrganiser.Pages;
 
 public partial class CampusMap : ContentPage
 {
-    
-    private ObservableCollection<MapLocation> mapLocations = new ObservableCollection<MapLocation>();
+
+	private ObservableCollection<MapLocation> mapLocations = new ObservableCollection<MapLocation>();
 	private ObservableCollection<MapLocation> MapLocations {get { return mapLocations;}}
-	//private List<MapLocation> mapLocations = new List<MapLocation>();
+	
 	private int locationID = 0;
 	private MapLocation selectedDestination;
 	private Map colegCambriaMap;
@@ -21,7 +21,7 @@ public partial class CampusMap : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = this;
-		GetMapLocations();
+		PopulateMapLocations();
 
 		allLocations.ItemsSource = mapLocations;		
 		allLocations.ItemDisplayBinding = new Binding("label");
@@ -30,8 +30,6 @@ public partial class CampusMap : ContentPage
 		MapSpan mapSpan = new MapSpan(colegCambria, 0.002, 0.002);
 		colegCambriaMap = new Map(mapSpan);
 		
-
-
 		colegCambriaMap.HeightRequest = 570;
 		colegCambriaMap.IsShowingUser = true;
 		colegCambriaMap.IsZoomEnabled = false;
@@ -43,12 +41,9 @@ public partial class CampusMap : ContentPage
 
 	}
 
-	private void GetMapLocations()
+	private void PopulateMapLocations()	
 	{
-		Location location = new Location(53.049920, -2.993762);
-		MapLocation newLocation = new MapLocation("B100", "Classroom B100", location, locationID);
-		mapLocations.Add(newLocation);
-		locationID++;
+		mapLocations = App.databaseConnector.GetAllLocations();
 	}
 
 	private async void LocationSelected(object sender, EventArgs e)
@@ -87,7 +82,7 @@ public partial class CampusMap : ContentPage
 
 		colegCambriaMap.MapElements.Add(navRoute);
 
-		navInfo.Text = $"Navigating to: Room {selectedDestination.GetLabel()}";
+		navInfo.Text = $"Navigating to: {selectedDestination.GetAddress()}";
 
         var request = new GeolocationListeningRequest(GeolocationAccuracy.High);
         await Geolocation.StartListeningForegroundAsync(request);
@@ -97,6 +92,7 @@ public partial class CampusMap : ContentPage
 	private async void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventArgs e)
 	{
 		colegCambriaMap.MapElements.Clear();
+		colegCambriaMap.Pins.Clear();
 
         Polyline navRoute = new Polyline
         {

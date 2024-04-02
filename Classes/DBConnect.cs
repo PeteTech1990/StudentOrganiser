@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Devices.Sensors;
+using System.Collections.ObjectModel;
 
 namespace StudentOrganiser.Classes
 {
@@ -60,6 +64,37 @@ namespace StudentOrganiser.Classes
                        select t;
             return await task.FirstOrDefaultAsync();
         }
+
+        public ObservableCollection<MapLocation> GetAllLocations()
+        {          
+
+            ObservableCollection<MapLocation> allLocations = new ObservableCollection<MapLocation>();
+            allLocations.Add(new MapLocation("B100", "Classroom B100", 53.049888165360315, -2.99382285460766, 0));
+            allLocations.Add(new MapLocation("C100", "Classroom C100", 53.049520553036494, -2.994036090199386, 1));
+            allLocations.Add(new MapLocation("D100", "Classroom D100", 53.049582628144314, -2.9929055391696155, 2));
+            allLocations.Add(new MapLocation("Cafe", "Ial Cafe", 53.04889742433294, -2.993014895621946, 3));
+            allLocations.Add(new MapLocation("Student Services", "Student Service Desk", 53.048814387458435, -2.9928231176998277, 4));
+
+            return allLocations;
+        }
+        
+
+        //public async Task<List<MapLocation>> GetAllLocations()
+        //{
+        //    await Init();
+
+        //    return await conn.Table<MapLocation>().ToListAsync();
+        //}
+
+        //public async Task AddMapLocationToDatabase(string label, string address, double locationPoint1, double locationPoint2)
+        //{
+        //    int result = 0;
+        //    await Init();
+
+        //    result = await conn.InsertAsync(new MapLocation { label = label, address = address, locationPoint1 = locationPoint1, locationPoint2 = locationPoint2 });
+
+
+        //}
 
     }
 }

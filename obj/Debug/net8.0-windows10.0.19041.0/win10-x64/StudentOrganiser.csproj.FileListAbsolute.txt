@@ -35,9 +35,7 @@ C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-window
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Microsoft.Windows.Security.AccessControl.Projection.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Microsoft.Windows.System.Power.Projection.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Microsoft.Windows.System.Projection.dll
-C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Microsoft.Windows.Widgets.Projection.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll
-C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Microsoft.WindowsAppRuntime.Release.Net.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\ar\Microsoft.Maui.Controls.resources.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\ca\Microsoft.Maui.Controls.resources.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\cs\Microsoft.Maui.Controls.resources.dll
@@ -184,3 +182,12 @@ C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-window
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\destination.scale-100.png
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Microsoft.Maui.Controls.Maps.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Microsoft.Maui.Maps.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\CommunityToolkit.Maui.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\CommunityToolkit.Maui.Core.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Microsoft.Windows.Widgets.Providers.Projection.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\SQLite-net.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\SQLitePCLRaw.batteries_v2.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\SQLitePCLRaw.core.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\System.Speech.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\e_sqlite3.dll

@@ -321,3 +321,9 @@ C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-ios\io
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-ios\iossimulator-x64\ref\StudentOrganiser.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\Microsoft.Maui.Controls.Maps.dll
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\Microsoft.Maui.Maps.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\CommunityToolkit.Maui.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\CommunityToolkit.Maui.Core.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\SQLite-net.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\SQLitePCLRaw.batteries_v2.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\SQLitePCLRaw.core.dll
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\bin\Debug\net8.0-ios\iossimulator-x64\SQLitePCLRaw.provider.sqlite3.dll
