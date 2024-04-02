@@ -4,31 +4,47 @@ namespace StudentOrganiser.Pages
 {
     public partial class ToDoList : ContentPage
     {
-        int taskIDCount = 0;
+        
         //AllTasks allToDos = new AllTasks();
         List<TodoTaskView> todoTaskViews = new List<TodoTaskView>();
 
         public ToDoList()
         {
             InitializeComponent();
-            
+
+            GetAllTasks();
 
             AddTask.Clicked += NewTask;
             //Counter.Clicked -= OnCounterClicked; To Unsubscribe
         }
 
-        private void NewTask(object sender, EventArgs e)
+        private async void NewTask(object sender, EventArgs e)
         {
-            ToDoListTask newTask = new ToDoListTask("Clean the Fridge", true, "Remove all the mould, throw old food", "Food Studies", DateTime.Now.AddDays(7), taskIDCount);
-            AllTasks.AddTask(newTask);
-            TodoTaskView newTaskView = new TodoTaskView(this, newTask);
-            this.allTasks.Children.Add(newTaskView.GetView());
-            todoTaskViews.Add(newTaskView);
-            taskIDCount++;
+            await Navigation.PushModalAsync(new AddTaskModal());
+
+            await App.databaseConnector.AddTaskToDatabase("Clean the Fridge", "Remove all the mould, throw old food", true, "Food Studies", DateTime.Now.AddDays(7));
+            
+            GetAllTasks();
             
         }
 
-        public void ClearTask(int idToClear)
+        public async void GetAllTasks()
+        {
+            List<ToDoListTask> allTasks = await App.databaseConnector.GetAllToDoListTasks();
+
+            this.allTasks.Children.Clear();
+
+            foreach (ToDoListTask task in allTasks)
+            {
+                TodoTaskView newTaskView = new TodoTaskView(this, task);
+                this.allTasks.Children.Add(newTaskView.GetView());
+                todoTaskViews.Add(newTaskView);
+            }
+
+
+        }
+
+        public async void ClearTask(int idToClear)
         {
 
             int indexNo = 0;
@@ -37,7 +53,7 @@ namespace StudentOrganiser.Pages
             {
                 if(task.GetTaskID() == idToClear)
                 {
-                    AllTasks.RemoveTask(task.GetTaskID());
+                    await App.databaseConnector.RemoveTaskFromDatabase(idToClear);
                     this.allTasks.Children.RemoveAt(indexNo);
                     todoTaskViews.RemoveAt(indexNo);
                     break;

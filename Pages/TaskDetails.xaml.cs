@@ -30,9 +30,9 @@ public partial class TaskDetails : ContentPage
 		}
 	}
 
-	private void UpdateTaskDetails(int taskID)
+	private async void UpdateTaskDetails(int taskID)
 	{
-		ToDoListTask thisTask = AllTasks.GetTask(taskID);
+		ToDoListTask thisTask = await App.databaseConnector.GetTaskDetails(taskID);//AllTasks.GetTask(taskID);
 
 		this.TaskTitle.Text = thisTask.GetTitle();
 		this.TaskPriority.Text = (thisTask.GetImportance() ? "!" : "");

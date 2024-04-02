@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using StudentOrganiser.Classes;
 
 namespace StudentOrganiser
 {
@@ -18,6 +19,9 @@ namespace StudentOrganiser
 
 #if DEBUG
     		builder.Logging.AddDebug();
+
+            string dbPath = FileSystem.AppDataDirectory + "/studentOrgDB.db3";
+            builder.Services.AddSingleton<DBConnect>(s => ActivatorUtilities.CreateInstance<DBConnect>(s, dbPath));
 #endif
 
             return builder.Build();

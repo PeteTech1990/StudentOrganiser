@@ -17,6 +17,9 @@
     <MauiXaml Update="Pages\CampusMap.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Pages\AddTaskModal.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Pages\StudentID.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

@@ -60,6 +60,9 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.14" />
+		<PackageReference Include="sqlite-net" Version="1.6.292" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.8" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -92,6 +95,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\AddTaskModal.xaml.cs">
+	    <DependentUpon>AddTaskModal.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\ToDoList.xaml.cs">
 	    <DependentUpon>ToDoList.xaml</DependentUpon>
 	  </Compile>
@@ -101,6 +107,9 @@
 	</ItemGroup>
 
 	<ItemGroup>    
+    <MauiXaml Update="Pages\AddTaskModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>    
     <MauiXaml Update="Pages\ToDoList.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>
