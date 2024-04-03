@@ -15,10 +15,12 @@ namespace StudentOrganiser.Classes
     {
         private SQLiteAsyncConnection conn;
         string dbPath;
+        private ObservableCollection<Subject> allSubjects = new ObservableCollection<Subject>();
 
         public DBConnect(string dbPath) 
         {
             this.dbPath = dbPath;
+            PopulateSubjects();
         }
 
         //https://learn.microsoft.com/en-us/training/modules/store-local-data/4-exercise-store-data-locally-with-sqlite
@@ -32,12 +34,12 @@ namespace StudentOrganiser.Classes
             await conn.CreateTableAsync<ToDoListTask>();
         }
 
-        public async Task AddTaskToDatabase(string title, string description, bool importance, string subject, DateTime dueDate)
+        public async Task AddTaskToDatabase(string title, string description, bool importance, int subjectID, DateTime dueDate, int recurrenceAddition)
         {
             int result = 0;
             await Init();
 
-            result = await conn.InsertAsync(new ToDoListTask { taskTitle = title, taskDescription = description, taskImportance = importance, taskSubject = subject, taskDueDate = dueDate });
+            result = await conn.InsertAsync(new ToDoListTask { taskTitle = title, taskDescription = description, taskImportance = importance, subjectID = subjectID, taskDueDate = dueDate, recurrenceAddition = recurrenceAddition });
 
 
         }
@@ -78,7 +80,30 @@ namespace StudentOrganiser.Classes
             return allLocations;
         }
         
+        private void PopulateSubjects()
+        {
+            allSubjects.Add(new Subject(0, "English", Color.FromRgb(0, 255, 0)));
+            allSubjects.Add(new Subject(0, "Science", Color.FromRgb(255, 0, 0)));
+            allSubjects.Add(new Subject(0, "PE", Color.FromRgb(255, 255, 0)));
+        }
 
+        public ObservableCollection<Subject> GetAllSubjects()
+        {
+            return allSubjects;
+        }
+
+        public string? GetSubjectName(int subjectID)
+        {
+            foreach(Subject subject in allSubjects)
+            {
+                if (subject.GetID() == subjectID)
+                {
+                    return subject.GetName();
+                }
+            }
+
+            return null;
+        }
         //public async Task<List<MapLocation>> GetAllLocations()
         //{
         //    await Init();

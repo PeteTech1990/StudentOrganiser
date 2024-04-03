@@ -1,4 +1,4 @@
-
+﻿
 
 using StudentOrganiser.Classes;
 
@@ -16,9 +16,9 @@ public partial class TodoTaskView : ContentView
         InitializeComponent();
         this.toDoListTask = NewToDoListTask;
         this.TaskTitle.Text = toDoListTask.GetTitle();        
-        this.TaskDescription.Text = toDoListTask.GetDescription().Remove(20) + "...";
-        this.TaskSubject.Text = toDoListTask.GetSubject();
+        this.TaskSubject.Text = toDoListTask.GetSubjectName();
         this.TaskFlag.Text = (toDoListTask.GetImportance() ? "!" : "");
+        this.TaskRecurrence.Text = (toDoListTask.GetRecurrence() != 0 ? "🔄" : "");
         this.TaskDueDate.Text = toDoListTask.GetDueDate().ToString("d");
         this.TaskDone.CheckedChanged += CompleteTask;
         this.main = mainPage;

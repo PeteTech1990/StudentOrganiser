@@ -15,6 +15,7 @@ namespace StudentOrganiser.Pages
             GetAllTasks();
 
             AddTask.Clicked += NewTask;
+            this.NavigatedTo += NavToEvent;
             //Counter.Clicked -= OnCounterClicked; To Unsubscribe
         }
 
@@ -22,19 +23,17 @@ namespace StudentOrganiser.Pages
         {
             await Navigation.PushModalAsync(new AddTaskModal());
 
-            await App.databaseConnector.AddTaskToDatabase("Clean the Fridge", "Remove all the mould, throw old food", true, "Food Studies", DateTime.Now.AddDays(7));
-            
-            GetAllTasks();
             
         }
 
         public async void GetAllTasks()
         {
-            List<ToDoListTask> allTasks = await App.databaseConnector.GetAllToDoListTasks();
+            List<ToDoListTask> allToDoTasks = await App.databaseConnector.GetAllToDoListTasks();
 
             this.allTasks.Children.Clear();
+            todoTaskViews.Clear();
 
-            foreach (ToDoListTask task in allTasks)
+            foreach (ToDoListTask task in allToDoTasks)
             {
                 TodoTaskView newTaskView = new TodoTaskView(this, task);
                 this.allTasks.Children.Add(newTaskView.GetView());
@@ -42,6 +41,11 @@ namespace StudentOrganiser.Pages
             }
 
 
+        }
+
+        private void NavToEvent(object sender, NavigatedToEventArgs e)
+        {
+            GetAllTasks();
         }
 
         public async void ClearTask(int idToClear)

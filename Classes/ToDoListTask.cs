@@ -24,10 +24,13 @@ namespace StudentOrganiser.Classes
         public bool taskImportance { get; set; }
 
         [MaxLength(50)]
-        public string? taskSubject { get; set; }
+        public int subjectID { get; set; }
 
         [MaxLength(100)]
         public DateTime taskDueDate { get; set; }
+
+        [MaxLength(3)]
+        public int recurrenceAddition { get; set; }
 
         public ToDoListTask() 
         {
@@ -59,14 +62,19 @@ namespace StudentOrganiser.Classes
             return taskImportance;
         }
 
-        public string? GetSubject()
+        public string GetSubjectName()
         {
-            return taskSubject;
+            return App.databaseConnector.GetSubjectName(subjectID);
         }
 
         public DateTime GetDueDate()
         {
             return taskDueDate;
+        }
+
+        public int GetRecurrence()
+        {
+            return recurrenceAddition;
         }
 
     }

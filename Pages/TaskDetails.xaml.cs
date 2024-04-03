@@ -37,7 +37,7 @@ public partial class TaskDetails : ContentPage
 		this.TaskTitle.Text = thisTask.GetTitle();
 		this.TaskPriority.Text = (thisTask.GetImportance() ? "!" : "");
 		this.TaskDescription.Text = thisTask.GetDescription();
-		this.TaskSubject.Text = thisTask.GetSubject();
+		this.TaskSubject.Text = thisTask.GetSubjectName();
 		this.TaskDueDate.Text = thisTask.GetDueDate().ToString("d");
 	}
 }

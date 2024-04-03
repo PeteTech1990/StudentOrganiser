@@ -42,15 +42,7 @@
             FontAttributes="Bold"
             FontSize="20"
             />
-        <Label 
-            x:Name="TaskDescription"
-            Text="Description"
-            VerticalOptions="End" 
-            HorizontalOptions="Start"
-            MaximumWidthRequest="190"
-            Grid.Row="1"
-            Grid.Column="1"
-            />
+        
             <Label 
             x:Name="TaskSubject"
             Text="Subject"
@@ -59,13 +51,17 @@
             Grid.Row="0"
             Grid.Column="2"
             FontSize="11.5"/>
-            <Label 
-            x:Name="TaskDueDate"
-            Text="Date"
+
+        <HorizontalStackLayout Grid.Row="1" Grid.Column="2">
+        <Label 
+            x:Name="TaskDueDate"            
             VerticalOptions="End" 
-            HorizontalOptions="End" 
-            Grid.Row="1"
-            Grid.Column="2"/>
+            HorizontalOptions="End"/>
+            <Label 
+            x:Name="TaskRecurrence"            
+            VerticalOptions="End" 
+            HorizontalOptions="End"/>
+        </HorizontalStackLayout>
         </Grid>
     
 </ContentView>
