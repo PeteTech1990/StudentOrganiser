@@ -8,9 +8,13 @@
 
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="50, *, 50" ColumnDefinitions="*">
+    <Grid RowDefinitions="50, 50, *, 50" ColumnDefinitions="*">
         <Label Text="To do list" Background="Blue" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
-        <VerticalStackLayout Spacing="15" Padding="20" x:Name="allTasks" Grid.Row="1">
+        <HorizontalStackLayout Grid.Row="1">
+            <Label x:Name="sortLabel" HorizontalOptions="Start"/>
+            <Picker Title="view" x:Name="sortSelect" HorizontalOptions="End" SelectedIndexChanged="SortSelectionChanged"/>
+        </HorizontalStackLayout>
+        <VerticalStackLayout Spacing="15" Padding="20" x:Name="allTasks" Grid.Row="2">
 
 
         </VerticalStackLayout>

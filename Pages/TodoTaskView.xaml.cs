@@ -36,14 +36,16 @@ public partial class TodoTaskView : ContentView
         return this.TaskView;
     }
 
-    public int GetTaskID()
+    public ToDoListTask GetToDoTask()
     {
-        return toDoListTask.GetID();
-    }
+        return toDoListTask;
+    }   
 
-    private void CompleteTask(object sender, CheckedChangedEventArgs e)
-    {   
-        main.ClearTask(toDoListTask.GetID());   
+    private async void CompleteTask(object sender, CheckedChangedEventArgs e)
+    {
+        await App.databaseConnector.RemoveTaskFromDatabase(toDoListTask.GetID());
+        //main.ClearTask(toDoListTask.GetID());
+        main.GetSortAndDisplayAllTasks();
     }
 
     

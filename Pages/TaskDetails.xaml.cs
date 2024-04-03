@@ -1,4 +1,4 @@
-using StudentOrganiser.Classes;
+﻿using StudentOrganiser.Classes;
 
 namespace StudentOrganiser.Pages;
 
@@ -39,5 +39,12 @@ public partial class TaskDetails : ContentPage
 		this.TaskDescription.Text = thisTask.GetDescription();
 		this.TaskSubject.Text = thisTask.GetSubjectName();
 		this.TaskDueDate.Text = thisTask.GetDueDate().ToString("d");
+		this.TaskRecurrence.Text = (thisTask.GetRecurrence() != 0) ? "🔄" : "";
+	}
+
+	private async void DeleteTask(object sender, EventArgs e)
+	{
+		await App.databaseConnector.RemoveTaskFromDatabase(taskID);
+		Shell.Current.SendBackButtonPressed();
 	}
 }

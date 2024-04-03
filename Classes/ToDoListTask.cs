@@ -61,6 +61,24 @@ namespace StudentOrganiser.Classes
         {
             return taskImportance;
         }
+       
+        public int GetImportanceValue()
+        {
+            if (taskImportance == true)
+            {
+                return 0;
+            }
+
+            else
+            {
+                return 1;
+            }
+        }
+
+        public int GetSubjectID()
+        {
+            return subjectID;
+        }
 
         public string GetSubjectName()
         {

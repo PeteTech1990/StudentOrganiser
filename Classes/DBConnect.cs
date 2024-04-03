@@ -83,8 +83,8 @@ namespace StudentOrganiser.Classes
         private void PopulateSubjects()
         {
             allSubjects.Add(new Subject(0, "English", Color.FromRgb(0, 255, 0)));
-            allSubjects.Add(new Subject(0, "Science", Color.FromRgb(255, 0, 0)));
-            allSubjects.Add(new Subject(0, "PE", Color.FromRgb(255, 255, 0)));
+            allSubjects.Add(new Subject(1, "Science", Color.FromRgb(255, 0, 0)));
+            allSubjects.Add(new Subject(2, "PE", Color.FromRgb(255, 255, 0)));
         }
 
         public ObservableCollection<Subject> GetAllSubjects()

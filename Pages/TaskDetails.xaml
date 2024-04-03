@@ -7,13 +7,20 @@
         
         
         <Label x:Name="TaskTitle" Grid.Row="0" Grid.Column="0" TextColor="Black" Padding="20" FontSize="20" FontAttributes="Bold"></Label>
-        <Label x:Name="TaskPriority" TextColor="Red" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="End" Padding="20"></Label>
+        <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+            <Button Text="Delete Task" FontSize="15" Clicked="DeleteTask"></Button>
+            <Label x:Name="TaskPriority" TextColor="Red" HorizontalTextAlignment="End" Padding="20"></Label>
+            
+        </VerticalStackLayout>
 
 
         <Label x:Name="TaskDescription" Grid.Row="1" Grid.ColumnSpan="2" Padding="20"></Label>
 
         <Label x:Name="TaskSubject" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="End" Padding="20"></Label>
-        <Label x:Name="TaskDueDate" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="End" Padding="20"></Label>
-        
+        <HorizontalStackLayout Grid.Row="2" Grid.Column="1">
+            <Label x:Name="TaskDueDate"  VerticalTextAlignment="End" Padding="20"></Label>
+            <Label x:Name="TaskRecurrence" VerticalTextAlignment="End" Padding="20"/>
+        </HorizontalStackLayout>
+
     </Grid>
 </ContentPage>

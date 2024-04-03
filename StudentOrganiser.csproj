@@ -123,6 +123,6 @@
 	  <Folder Include="Views\" />
 	</ItemGroup>
 
-	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionStudentOrganiserHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerExceptionStudentOrganiserHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionStudentOrganiserHideInfoBar="True" XamarinHotReloadGenericExceptionInfoBarStudentOrganiserHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
