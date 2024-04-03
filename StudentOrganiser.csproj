@@ -57,10 +57,12 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="8.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="3.1.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.14" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.14" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.14" />
+		<PackageReference Include="Plugin.Maui.Audio" Version="2.1.0" />
 		<PackageReference Include="sqlite-net" Version="1.6.292" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.8" />
@@ -96,8 +98,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\AddNoteModal.xaml.cs">
+	    <DependentUpon>AddNoteModal.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\AddTaskModal.xaml.cs">
 	    <DependentUpon>AddTaskModal.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\NotesView.xaml.cs">
+	    <DependentUpon>NotesView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\ToDoList.xaml.cs">
 	    <DependentUpon>ToDoList.xaml</DependentUpon>
@@ -108,7 +116,19 @@
 	</ItemGroup>
 
 	<ItemGroup>    
+    <MauiXaml Update="Pages\AddAudioToNoteModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>    
+    <MauiXaml Update="Pages\AddNoteModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>    
     <MauiXaml Update="Pages\AddTaskModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>    
+    <MauiXaml Update="Pages\Notes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>    
+    <MauiXaml Update="Pages\NotesView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>    
     <MauiXaml Update="Pages\ToDoList.xaml">

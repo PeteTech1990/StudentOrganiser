@@ -11,6 +11,12 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="Pages\AddAudioToNoteModal.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Pages\AddNoteModal.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Pages\Calendar.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
@@ -18,6 +24,12 @@
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Pages\AddTaskModal.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Pages\Notes.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Pages\NotesView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Pages\StudentID.xaml">

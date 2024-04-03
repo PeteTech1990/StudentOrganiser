@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using StudentOrganiser.Classes;
 using StudentOrganiser.Pages;
+using Plugin.Maui.Audio;
 
 namespace StudentOrganiser
 {
@@ -13,6 +14,7 @@ namespace StudentOrganiser
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .UseMauiCommunityToolkitMediaElement()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -26,6 +28,8 @@ namespace StudentOrganiser
             string dbPath = FileSystem.AppDataDirectory + "/studentOrgDB.db3";
             builder.Services.AddSingleton<DBConnect>(s => ActivatorUtilities.CreateInstance<DBConnect>(s, dbPath));
 
+            builder.Services.AddSingleton(AudioManager.Current);
+            builder.Services.AddTransient<AddAudioToNoteModal>();
 #endif
 
             return builder.Build();

@@ -19,6 +19,9 @@
         <Tab Icon="maps.png">
             <ShellContent ContentTemplate="{DataTemplate local:CampusMap}"/>
         </Tab>
+        <Tab Icon="notes.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Notes}"/>
+        </Tab>
         <Tab Icon="qrcode.png">
             <ShellContent ContentTemplate="{DataTemplate local:StudentID}"/>
         </Tab>

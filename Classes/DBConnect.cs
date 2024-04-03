@@ -32,6 +32,7 @@ namespace StudentOrganiser.Classes
             conn = new SQLiteAsyncConnection(dbPath);
 
             await conn.CreateTableAsync<ToDoListTask>();
+            await conn.CreateTableAsync<Note>();
         }
 
         public async Task AddTaskToDatabase(string title, string description, bool importance, int subjectID, DateTime dueDate, int recurrenceAddition)
@@ -104,22 +105,31 @@ namespace StudentOrganiser.Classes
 
             return null;
         }
-        //public async Task<List<MapLocation>> GetAllLocations()
-        //{
-        //    await Init();
 
-        //    return await conn.Table<MapLocation>().ToListAsync();
-        //}
+        public async Task<List<Note>> GetAllNotes()
+        {
+            await Init();
+            return await conn.Table<Note>().ToListAsync();
+        }
 
-        //public async Task AddMapLocationToDatabase(string label, string address, double locationPoint1, double locationPoint2)
-        //{
-        //    int result = 0;
-        //    await Init();
+        public async Task RemoveNoteFromDatabase(int id)
+        {
+            await Init();
 
-        //    result = await conn.InsertAsync(new MapLocation { label = label, address = address, locationPoint1 = locationPoint1, locationPoint2 = locationPoint2 });
+            await conn.DeleteAsync<Note>(id);
+        }
+
+        public async Task AddNoteToDatabase(string title, string text, int subjectID, string audio, string video, DateTime currentDateTime, int noteID)
+        {
+            int result = 0;
+            await Init();
+
+            result = await conn.InsertAsync(new Note { noteTitle = title, noteText = text, subjectID = subjectID, noteAudio = audio, noteVideo = video, noteDate = currentDateTime, noteID = noteID });
 
 
-        //}
+        }
+
+        
 
     }
 }

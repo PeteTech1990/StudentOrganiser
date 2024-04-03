@@ -24,6 +24,18 @@ build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.AppShell.
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/AddAudioToNoteModal.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.AddAudioToNoteModal.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\AddAudioToNoteModal.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\AddAudioToNoteModal.xaml
+
+[C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/AddNoteModal.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.AddNoteModal.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\AddNoteModal.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\AddNoteModal.xaml
+
 [C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/AddTaskModal.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.AddTaskModal.xaml
@@ -41,6 +53,18 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.CampusMap.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\CampusMap.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\CampusMap.xaml
+
+[C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/Notes.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.Notes.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\Notes.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\Notes.xaml
+
+[C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/NotesView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.NotesView.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\NotesView.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\NotesView.xaml
 
 [C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/StudentID.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

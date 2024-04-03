@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganiser.Pages.AddAudioToNoteModal"
+             Title="AddAudioToNoteModal">
+    <VerticalStackLayout>
+        <HorizontalStackLayout Spacing="50">
+            <Button x:Name="Record" Clicked="RecordAudio" Text="⏺"></Button>
+            <Button x:Name="Playback" Clicked="PlaybackAudio" Text="⏯"></Button>
+            <Button x:Name="Reset" Clicked="ResetAudio" Text="🔄"></Button>
+        </HorizontalStackLayout>
+        <Button x:Name="SaveAudio" Clicked="SaveAudioFile" Text="Done"></Button>
+    </VerticalStackLayout>
+</ContentPage>

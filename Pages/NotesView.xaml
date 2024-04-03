@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="StudentOrganiser.Pages.NotesView">
+    
+    <ContentView.Resources>
+        <Style x:Key="NoteLayout" TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="LightGray"/>
+            <Setter Property="HeightRequest" Value="75"/>
+        </Style>
+    </ContentView.Resources>
+
+    <Grid x:Name="NoteView" Padding="10" Style="{StaticResource NoteLayout}" RowDefinitions="*,*,*" ColumnDefinitions="*,*" HeightRequest="200">
+
+
+        <Label
+        x:Name="NoteTitle"
+        VerticalOptions="Start" 
+        HorizontalOptions="Start" 
+        Grid.Row="0"
+        Grid.Column="0"
+        FontAttributes="Bold"
+        FontSize="20"
+        />
+        
+        <HorizontalStackLayout x:Name="NoteContent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="End">
+        <Label 
+        x:Name="NoteText"  
+        FontSize="11.5"/>
+        </HorizontalStackLayout>
+
+
+        <Label 
+        x:Name="NoteSubject"            
+        VerticalOptions="End" 
+        HorizontalOptions="End"
+        Grid.Row="0"
+        Grid.Column="1"/>
+        
+        <Button Text="Delete Note" Grid.Row="2" Grid.Column="0" HorizontalOptions="Start" Clicked="DeleteNote"></Button>
+        
+        <Label 
+        x:Name="NoteDate"            
+        VerticalOptions="End" 
+        HorizontalOptions="End"
+        Grid.Row="2"
+        Grid.Column="1"/>
+
+    </Grid>
+</ContentView>

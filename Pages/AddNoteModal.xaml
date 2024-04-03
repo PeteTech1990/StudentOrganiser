@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="StudentOrganiser.Pages.AddNoteModal">
+    <Grid RowDefinitions="*, *, 8*, *" ColumnDefinitions="* , *" HeightRequest="500" RowSpacing="10" Padding="10">
+        <Label FontSize="20" Text="Add a Note" HorizontalOptions="Start" Grid.Row="0" Grid.ColumnSpan="0"/>
+    
+        <Entry x:Name="title" Grid.Row="1" Grid.Column="0" Placeholder="Note title"/>
+        
+            <HorizontalStackLayout Grid.Row="1" Grid.Column="1">
+                <Label Text="Subject:" HorizontalOptions="Start" VerticalOptions="End"/>
+                <Picker x:Name="subject" />
+            </HorizontalStackLayout>
+
+        <Border Grid.Row="2" Grid.ColumnSpan="2" Stroke="Black">
+            <VerticalStackLayout x:Name="NoteContent">
+                <Entry x:Name="text" Placeholder="Note text" VerticalOptions="Start"/>
+                <HorizontalStackLayout Spacing="50">
+                    <Button x:Name="AddAudio" Text="🔊" HorizontalOptions="Start" Clicked="OpenAudioModal"/>
+                    <Button x:Name="AddVideo" Text="🎥" HorizontalOptions="End"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Border>       
+        
+        <Button Text="Add" BackgroundColor="Blue" Clicked="AddNote" Grid.Row="3" Grid.Column="1" WidthRequest="70" HorizontalOptions="End"></Button>
+
+    </Grid>
+</ContentPage>

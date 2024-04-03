@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentOrganiser.Pages.Notes">
+    
+    <Grid RowDefinitions="50, 50, *, 50" ColumnDefinitions="*">
+        <Label Text="Notes" Background="Blue" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
+        <HorizontalStackLayout Grid.Row="1">
+            <Label x:Name="sortLabel" HorizontalOptions="Start"/>
+            <Picker Title="view" x:Name="sortSelect" HorizontalOptions="End" SelectedIndexChanged="SortSelectionChanged"/>
+        </HorizontalStackLayout>
+        <VerticalStackLayout Spacing="15" Padding="20" x:Name="allNotes" Grid.Row="2">
+
+
+        </VerticalStackLayout>
+        <Button x:Name = "AddNote"
+             Text="+"
+             HorizontalOptions="End"
+             VerticalOptions="End"
+             Grid.Row="2"
+             />
+
+    </Grid>
+</ContentPage>

@@ -1,68 +1,13 @@
-<?xml version="1.0" encoding='utf-8' standalone='no'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!-- java/com/google/android/gmscore/integ/client/maps/res/values/maps_attrs.xml -->
-<eat-comment/>
-<declare-styleable name="MapAttrs"><attr name="mapType">
-<enum name="none" value="0"/>
-
-<enum name="normal" value="1"/>
-
-<enum name="satellite" value="2"/>
-
-<enum name="terrain" value="3"/>
-
-<enum name="hybrid" value="4"/>
-
-</attr>
-
-<attr name="cameraBearing" format="float"/>
-
-<attr name="cameraTargetLat" format="float"/>
-
-<attr name="cameraTargetLng" format="float"/>
-
-<attr name="cameraTilt" format="float"/>
-
-<attr name="cameraZoom" format="float"/>
-
-<attr name="liteMode" format="boolean"/>
-
-<attr name="uiCompass" format="boolean"/>
-
-<attr name="uiRotateGestures" format="boolean"/>
-
-<attr name="uiScrollGestures" format="boolean"/>
-
-<attr name="uiScrollGesturesDuringRotateOrZoom" format="boolean"/>
-
-<attr name="uiTiltGestures" format="boolean"/>
-
-<attr name="uiZoomControls" format="boolean"/>
-
-<attr name="uiZoomGestures" format="boolean"/>
-
-<attr name="useViewLifecycle" format="boolean"/>
-
-<attr name="zOrderOnTop" format="boolean"/>
-
-<attr name="uiMapToolbar" format="boolean"/>
-
-<attr name="ambientEnabled" format="boolean"/>
-
-<attr name="cameraMinZoomPreference" format="float"/>
-
-<attr name="cameraMaxZoomPreference" format="float"/>
-
-<attr name="latLngBoundsSouthWestLatitude" format="float"/>
-
-<attr name="latLngBoundsSouthWestLongitude" format="float"/>
-
-<attr name="latLngBoundsNorthEastLatitude" format="float"/>
-
-<attr name="latLngBoundsNorthEastLongitude" format="float"/>
-
-<attr name="backgroundColor" format="color"/>
-
-<attr name="mapId" format="string"/>
-</declare-styleable>
+    <color name="browser_actions_bg_grey">#F5F5F5</color>
+    <color name="browser_actions_divider_color">#1E000000</color>
+    <color name="browser_actions_text_color">#DE000000</color>
+    <color name="browser_actions_title_color">#646464</color>
+    <dimen name="browser_actions_context_menu_max_width">500dp</dimen>
+    <dimen name="browser_actions_context_menu_min_padding">20dp</dimen>
+    <string name="copy_toast_msg">Link copied to clipboard</string>
+    <string name="fallback_menu_item_copy_link">Copy link</string>
+    <string name="fallback_menu_item_open_in_browser">Open in browser</string>
+    <string name="fallback_menu_item_share_link">Share link</string>
 </resources>
