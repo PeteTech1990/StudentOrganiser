@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="StudentOrganiser.Pages.AddVideoToNoteModal">
+    <VerticalStackLayout>
+        <Border x:Name="MediaView" HeightRequest="300">
+            <toolkit:MediaElement x:Name="videoPlayer" HeightRequest="250" ShouldAutoPlay="False" ShouldShowPlaybackControls="true"/>
+        </Border>
+        <HorizontalStackLayout Spacing="50">
+            
+            <Button x:Name="LocalVideo" Clicked="AddLocalVideo" Text="⏺"></Button>
+            <Button x:Name="YoutubeVideo" Clicked="AddYoutubeVideo" Text="⏯"></Button>
+            
+        </HorizontalStackLayout>
+        
+        <Button x:Name="SaveVideo" Clicked="SaveVideoFile" Text="Done"></Button>
+    </VerticalStackLayout>
+</ContentPage>

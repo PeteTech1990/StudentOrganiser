@@ -46,6 +46,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.Add
 build_metadata.AdditionalFiles.TargetPath = Pages\AddTaskModal.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\AddTaskModal.xaml
 
+[C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/AddVideoToNoteModal.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.AddVideoToNoteModal.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\AddVideoToNoteModal.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\AddVideoToNoteModal.xaml
+
 [C:/Users/Home/source/repos/PeteTech1990/StudentOrganiser/Pages/Calendar.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = StudentOrganiser.Pages.Calendar.xaml

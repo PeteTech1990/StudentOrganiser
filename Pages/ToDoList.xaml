@@ -8,6 +8,7 @@
 
     </ContentPage.Resources>
 
+    <ScrollView>
     <Grid RowDefinitions="50, 50, *, 50" ColumnDefinitions="*">
         <Label Text="To do list" Background="Blue" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
         <HorizontalStackLayout Grid.Row="1">
@@ -26,5 +27,5 @@
                 />
 
     </Grid>
-
+    </ScrollView>
 </ContentPage>

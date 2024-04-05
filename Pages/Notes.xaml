@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StudentOrganiser.Pages.Notes">
-    
+             x:Class="StudentOrganiser.Pages.Notes"
+             >
+    <ScrollView>
     <Grid RowDefinitions="50, 50, *, 50" ColumnDefinitions="*">
         <Label Text="Notes" Background="Blue" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
         <HorizontalStackLayout Grid.Row="1">
@@ -21,4 +22,5 @@
              />
 
     </Grid>
+    </ScrollView>
 </ContentPage>

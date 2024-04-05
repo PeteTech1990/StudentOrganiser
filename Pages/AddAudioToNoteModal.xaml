@@ -9,6 +9,7 @@
             <Button x:Name="Playback" Clicked="PlaybackAudio" Text="⏯"></Button>
             <Button x:Name="Reset" Clicked="ResetAudio" Text="🔄"></Button>
         </HorizontalStackLayout>
+        
         <Button x:Name="SaveAudio" Clicked="SaveAudioFile" Text="Done"></Button>
     </VerticalStackLayout>
 </ContentPage>

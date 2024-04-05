@@ -98,6 +98,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\AddVideoToNoteModal.xaml.cs">
+	    <DependentUpon>AddVideoToNoteModal.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\AddNoteModal.xaml.cs">
 	    <DependentUpon>AddNoteModal.xaml</DependentUpon>
 	  </Compile>
@@ -116,6 +119,9 @@
 	</ItemGroup>
 
 	<ItemGroup>    
+    <MauiXaml Update="Pages\AddVideoToNoteModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>    
     <MauiXaml Update="Pages\AddAudioToNoteModal.xaml">
       <Generator>MSBuild:Compile</Generator>
     </MauiXaml>    

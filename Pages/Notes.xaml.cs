@@ -58,27 +58,30 @@ public partial class Notes : ContentPage
     {
         List<Note> allNotes = await App.databaseConnector.GetAllNotes();
 
-        SortNotes(allNotes, sortSelect.SelectedItem.ToString());
-
-        this.allNotes.Children.Clear();
-
-
-        foreach (NoteGroup noteGroup in noteGroups)
+        if (allNotes.Count > 0)
         {
-            VerticalStackLayout noteGroupView = new VerticalStackLayout();
-            Label groupLabel = new Label();
-            groupLabel.Text = noteGroup.GetTitle();
-            noteGroupView.Children.Add(groupLabel);
-            noteGroupView.Spacing = 5;
+            SortNotes(allNotes, sortSelect.SelectedItem.ToString());
 
-            foreach (Note note in noteGroup.GetNotes())
+            this.allNotes.Children.Clear();
+
+
+            foreach (NoteGroup noteGroup in noteGroups)
             {
+                VerticalStackLayout noteGroupView = new VerticalStackLayout();
+                Label groupLabel = new Label();
+                groupLabel.Text = noteGroup.GetTitle();
+                noteGroupView.Children.Add(groupLabel);
+                noteGroupView.Spacing = 5;
 
-                NotesView newNoteView = new NotesView(this, note);
-                noteGroupView.Children.Add(newNoteView.GetView());
+                foreach (Note note in noteGroup.GetNotes())
+                {
+
+                    NotesView newNoteView = new NotesView(this, note);
+                    noteGroupView.Children.Add(newNoteView.GetView());
+                }
+
+                this.allNotes.Children.Add(noteGroupView);
             }
-
-            this.allNotes.Children.Add(noteGroupView);
         }
 
     }

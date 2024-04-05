@@ -3,7 +3,7 @@ using CommunityToolkit.Maui.Views;
 using System.Collections.ObjectModel;
 using StudentOrganiser.Classes;
 using Plugin.Maui.Audio;
-using static Android.Provider.ContactsContract.CommonDataKinds;
+using System.Xml.Serialization;
 
 namespace StudentOrganiser.Pages;
 
@@ -17,6 +17,7 @@ public partial class AddNoteModal : ContentPage
 
     private string noteID = DateTime.Now.ToString("FFFFFF");
     private string audioPath = " ";
+    private string videoPath = " ";
 
     public AddNoteModal()
 	{
@@ -26,12 +27,14 @@ public partial class AddNoteModal : ContentPage
 
         subject.ItemsSource = subjects;
         subject.ItemDisplayBinding = new Binding("name");
+
+        this.NavigatedTo += NavTo;
                 
     }
 
     public async void AddNote(object sender, EventArgs e)
     {
-        await App.databaseConnector.AddNoteToDatabase(title.Text, text.Text, ((Subject)subject.SelectedItem).GetID(), audioPath, "video", DateTime.Now, Convert.ToInt32(noteID));
+        await App.databaseConnector.AddNoteToDatabase(title.Text, text.Text, ((Subject)subject.SelectedItem).GetID(), audioPath, videoPath, DateTime.Now, Convert.ToInt32(noteID));
              
         await Navigation.PopModalAsync();
     }
@@ -39,16 +42,57 @@ public partial class AddNoteModal : ContentPage
     public async void OpenAudioModal(object sender, EventArgs e)
     {   
         await Navigation.PushModalAsync(new AddAudioToNoteModal(AudioManager.Current, Convert.ToInt32(noteID)));
+        
+        
+    }
 
-        if(File.Exists(FileSystem.AppDataDirectory + $"/{noteID}"))
+    public async void OpenVideoModal(object sender, EventArgs e)
+    {
+        await Navigation.PushModalAsync(new AddVideoToNoteModal(Convert.ToInt32(noteID)));
+
+
+    }
+
+    private void NavTo(object sender, EventArgs e)
+    {
+        System.Threading.Thread.Sleep(1000);
+
+        if (File.Exists(FileSystem.AppDataDirectory + $"/{noteID}.mp3"))
         {
-            audioPath = FileSystem.AppDataDirectory + $"/{noteID}";
+            audioPath = FileSystem.AppDataDirectory + $"/{noteID}.mp3";
 
             MediaElement audioPlayer = new MediaElement();
             audioPlayer.ShouldAutoPlay = false;
             audioPlayer.ShouldShowPlaybackControls = true;
             audioPlayer.Source = audioPath;
+            audioPlayer.ShouldAutoPlay = false;
+            audioPlayer.HeightRequest = 250;
             NoteContent.Children.Add(audioPlayer);
+        }
+
+        if (File.Exists(FileSystem.AppDataDirectory + $"/{noteID}.mp4"))
+        {
+            videoPath = FileSystem.AppDataDirectory + $"/{noteID}.mp4";
+
+            MediaElement videoPlayer = new MediaElement();
+            videoPlayer.ShouldAutoPlay = false;
+            videoPlayer.ShouldShowPlaybackControls = true;
+            videoPlayer.Source = videoPath;
+            videoPlayer.ShouldAutoPlay = false;
+            videoPlayer.HeightRequest = 250;
+            NoteContent.Children.Add(videoPlayer);
+        }
+
+        if (File.Exists(FileSystem.AppDataDirectory + $"/{noteID}.txt"))
+        {
+            videoPath = FileSystem.AppDataDirectory + $"/{noteID}.txt";
+
+            WebView youtubeVideoViewer = new WebView();
+            youtubeVideoViewer.Source = File.ReadAllText(FileSystem.AppDataDirectory + $"/{noteID}.txt");
+            youtubeVideoViewer.HeightRequest = 250;
+            NoteContent.Children.Add(youtubeVideoViewer);
+
+
         }
     }
 }

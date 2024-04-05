@@ -2,16 +2,16 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="StudentOrganiser.Pages.NotesView">
+             x:Class="StudentOrganiser.Pages.NotesView"
+             >
     
     <ContentView.Resources>
         <Style x:Key="NoteLayout" TargetType="Grid">
             <Setter Property="BackgroundColor" Value="LightGray"/>
-            <Setter Property="HeightRequest" Value="75"/>
         </Style>
     </ContentView.Resources>
 
-    <Grid x:Name="NoteView" Padding="10" Style="{StaticResource NoteLayout}" RowDefinitions="*,*,*" ColumnDefinitions="*,*" HeightRequest="200">
+    <Grid x:Name="NoteView" Padding="20" RowSpacing="10" Style="{StaticResource NoteLayout}" RowDefinitions="*,10*,*" ColumnDefinitions="*,*" MaximumHeightRequest="1200">
 
 
         <Label
@@ -22,23 +22,26 @@
         Grid.Column="0"
         FontAttributes="Bold"
         FontSize="20"
+            HeightRequest="30"
         />
         
-        <HorizontalStackLayout x:Name="NoteContent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="End">
+        <VerticalStackLayout x:Name="NoteContent" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="Start">
         <Label 
         x:Name="NoteText"  
-        FontSize="11.5"/>
-        </HorizontalStackLayout>
+        FontSize="11.5"
+            HeightRequest="30"
+            Margin="10"/>
+        </VerticalStackLayout>
 
 
         <Label 
         x:Name="NoteSubject"            
-        VerticalOptions="End" 
+        VerticalOptions="Start" 
         HorizontalOptions="End"
         Grid.Row="0"
         Grid.Column="1"/>
         
-        <Button Text="Delete Note" Grid.Row="2" Grid.Column="0" HorizontalOptions="Start" Clicked="DeleteNote"></Button>
+        <Button Text="Delete Note" Grid.Row="2" Grid.Column="0" HorizontalOptions="Start" Clicked="DeleteNote" HeightRequest="50" Margin="0, 0, 0, 15"></Button>
         
         <Label 
         x:Name="NoteDate"            
