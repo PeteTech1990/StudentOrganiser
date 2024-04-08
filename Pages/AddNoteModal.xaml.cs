@@ -41,14 +41,14 @@ public partial class AddNoteModal : ContentPage
 
     public async void OpenAudioModal(object sender, EventArgs e)
     {   
-        await Navigation.PushModalAsync(new AddAudioToNoteModal(AudioManager.Current, Convert.ToInt32(noteID)));
+        await Navigation.PushModalAsync(new AddAudioToNoteModal(AudioManager.Current, noteID));
         
         
     }
 
     public async void OpenVideoModal(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new AddVideoToNoteModal(Convert.ToInt32(noteID)));
+        await Navigation.PushModalAsync(new AddVideoToNoteModal(noteID));
 
 
     }

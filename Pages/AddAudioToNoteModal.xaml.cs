@@ -10,9 +10,9 @@ public partial class AddAudioToNoteModal : ContentPage
 	private IAudioRecorder _audioRecorder;
 	private AsyncAudioPlayer _audioPlayer;
 	private IAudioSource recording = null;
-	private int noteID;
+	private string noteID;
 
-	public AddAudioToNoteModal(IAudioManager audioManager, int noteID)
+	public AddAudioToNoteModal(IAudioManager audioManager, string noteID)
 	{
 		InitializeComponent();
 

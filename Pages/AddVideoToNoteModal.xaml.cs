@@ -10,10 +10,10 @@ namespace StudentOrganiser.Pages;
 public partial class AddVideoToNoteModal : ContentPage
 {
 
-	private int noteID;
+	private string noteID;
 	private string filePath;
 
-    public AddVideoToNoteModal(int noteID)
+    public AddVideoToNoteModal(string noteID)
 	{
 		InitializeComponent();
 
@@ -82,8 +82,10 @@ public partial class AddVideoToNoteModal : ContentPage
 
             if (await Permissions.RequestAsync<Permissions.StorageWrite>() == PermissionStatus.Granted)
             {
-                File.CreateText(FileSystem.AppDataDirectory + $"/{noteID}.txt").Dispose();
-                
+                string filePath = FileSystem.AppDataDirectory + $"/{noteID}.txt";
+
+                File.CreateText(filePath).Dispose();
+
                 await File.WriteAllTextAsync(FileSystem.AppDataDirectory + $"/{noteID}.txt", result);
                 
                 
