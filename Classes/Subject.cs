@@ -28,5 +28,10 @@ namespace StudentOrganiser.Classes
         {
             return name;
         }
+
+        public Color GetColour()
+        {
+            return color;
+        }
     }
 }

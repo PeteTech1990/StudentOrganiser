@@ -13,6 +13,9 @@ namespace StudentOrganiser.Classes
 {
     public class DBConnect
     {
+        public List<string> classrooms = new List<string>() { "C110", "D110", "E110", "F110", "G110", "H110", "I110" };
+        public List<string> tutors = new List<string>() { "Mr Griffiths", "Mrs Rutter", "Mr Gilmartin", "Mr Jones", "Mrs Summers" };
+
         private SQLiteAsyncConnection conn;
         string dbPath;
         private ObservableCollection<Subject> allSubjects = new ObservableCollection<Subject>();
@@ -33,6 +36,7 @@ namespace StudentOrganiser.Classes
 
             await conn.CreateTableAsync<ToDoListTask>();
             await conn.CreateTableAsync<Note>();
+            await conn.CreateTableAsync<Lesson>();
         }
 
         public async Task AddTaskToDatabase(string title, string description, bool importance, int subjectID, DateTime dueDate, int recurrenceAddition)
@@ -106,6 +110,19 @@ namespace StudentOrganiser.Classes
             return null;
         }
 
+        public Color GetSubjectColour(int subjectID)
+        {
+            foreach (Subject subject in allSubjects)
+            {
+                if (subject.GetID() == subjectID)
+                {
+                    return subject.GetColour();
+                }
+            }
+
+            return null;
+        }
+
         public async Task<List<Note>> GetAllNotes()
         {
             await Init();
@@ -129,7 +146,54 @@ namespace StudentOrganiser.Classes
 
         }
 
-        
+        public async Task PopulateLessons()
+        {
+            await Init();
+            Random subjectRandomiser = new Random();
+            Random tutorRandomiser = new Random();
+            Random classroomRandomiser = new Random();
+
+            DateTime lessonDateAssigned = Convert.ToDateTime("03/01/2024");
+
+            for (int i = 0;i< 100;i++)
+            {               
+
+                while (lessonDateAssigned.DayOfWeek == DayOfWeek.Saturday || lessonDateAssigned.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    lessonDateAssigned.AddDays(1);
+                }
+
+                for(int j = 0;j<7;j++)
+                {
+                    int subjectID = subjectRandomiser.Next(0,3);
+                    string tutor = tutors[tutorRandomiser.Next(0,5)];
+                    string classroom = classrooms[classroomRandomiser.Next(0,7)];
+
+                    await conn.InsertAsync(new Lesson { lessonTitle = allSubjects[subjectID].GetName(), subjectID = subjectID, lessonTutor = tutor, lessonClassroom = classroom, lessonDate = lessonDateAssigned, lessonTimePeriod = j });
+                }
+
+                lessonDateAssigned.AddDays(1);
+            }
+
+            
+        }
+
+        public async Task<List<Lesson>> GetLessonsForMonth(int month, int year)
+        {
+            await Init();
+
+            
+
+           var lessons = from t in conn.Table<Lesson>()
+                       where t.lessonDate.Month == month && t.lessonDate.Year == year
+                       select t;
+            List<Lesson> result = await lessons.ToListAsync();
+            return result;
+            
+
+        }
+
+
 
     }
 }

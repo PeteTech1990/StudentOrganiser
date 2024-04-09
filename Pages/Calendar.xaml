@@ -3,10 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:StudentOrganiser"
              x:Class="StudentOrganiser.Pages.Calendar">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <Grid RowDefinitions="50, 50, *, 100" ColumnDefinitions="*">
+        <Label Text="Calendar" Background="Blue" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
+        <HorizontalStackLayout Grid.Row="1">
+            <Button x:Name="prevMonth" Text="&lt;"/>
+            <Label x:Name="currentMonth"/>
+            <Button x:Name="nextMonth" Text="&gt;"/>
+        </HorizontalStackLayout>
+        <Border Grid.Row="2">
+        <ScrollView Orientation="Horizontal" >
+            <Grid RowDefinitions="*, *, *, *, *, *, *, *" ColumnDefinitions="*" x:Name="CalendarGrid" HeightRequest="400">
+                    <Border Grid.Row="1" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                        <Label Text="1"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                        <Label Text="2"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        </Border>
+                    <Border Grid.Row="3" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                        <Label Text="3"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        </Border>
+                    <Border Grid.Row="4" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                        <Label Text="4"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </Border>
+                    <Border Grid.Row="5" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                        <Label Text="5"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </Border>
+                    <Border Grid.Row="6" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                        <Label Text="6"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </Border>
+                    <Border Grid.Row="7" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                        <Label Text="7"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </Border>
+                </Grid>
+        </ScrollView>
+        </Border>
+        <Border Grid.Row="3">
+            <Grid ColumnDefinitions="2*, *" RowDefinitions="2*, *, *">
+                <Label x:Name="Subject" Grid.Row="0" Grid.Column="0"/>
+                <Label x:Name="Teacher" Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="Room" Grid.Row="2" Grid.Column="0"/>
+                <Image x:Name="subjectIcon" Source="english.jpg" Grid.Column="1" Grid.RowSpan="3"/>
+            </Grid>
+        </Border>
+
+    </Grid>
 </ContentPage>

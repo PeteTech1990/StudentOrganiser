@@ -3,7 +3,7 @@ Classes
 - Student - StudentID, StudentName
 - Task - TaskID, TaskTitle, TaskDetails, TaskDueDate, TaskSubject, TaskReccurence, TaskPriority
 - Note - NoteID, NoteType, NoteTitle, NoteDate, NoteText, NoteAudio, NoteVideo
-- Lesson - LessonID, LessonTitle, LessonSubject, LessonTutor, Lesson
+- Lesson - LessonID, LessonTitle, LessonSubject, LessonTutor, LessonDate, LessonTimePeriod
 - Classroom - ClassroomID, ClassroomName, ClassroomCoordinates
 - NavigationRoute - RouteID, Coordinates[]
 
