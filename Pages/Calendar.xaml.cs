@@ -1,4 +1,5 @@
 using StudentOrganiser.Classes;
+using System.Globalization;
 
 namespace StudentOrganiser.Pages;
 
@@ -26,8 +27,9 @@ public partial class Calendar : ContentPage
 	//NextMonthClick event
 
 	private void BuildCalendar(DateTime currentCalendarMonth)
-	{		
-		currentMonth.Text = currentCalendarMonth.Month.ToString("MMMM");
+	{
+        //https://stackoverflow.com/questions/6286868/convert-month-int-to-month-name
+        currentMonth.Text = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(currentCalendarMonth.Month);
 
 		int numDays = DateTime.DaysInMonth(currentCalendarMonth.Year, currentCalendarMonth.Month);
 

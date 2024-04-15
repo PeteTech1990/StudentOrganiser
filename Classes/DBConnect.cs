@@ -149,11 +149,12 @@ namespace StudentOrganiser.Classes
         public async Task PopulateLessons()
         {
             await Init();
+            await conn.DeleteAllAsync<Lesson>();
             Random subjectRandomiser = new Random();
             Random tutorRandomiser = new Random();
             Random classroomRandomiser = new Random();
 
-            DateTime lessonDateAssigned = Convert.ToDateTime("03/01/2024");
+            DateTime lessonDateAssigned = Convert.ToDateTime("04/01/2024");
 
             for (int i = 0;i< 100;i++)
             {               
@@ -172,7 +173,7 @@ namespace StudentOrganiser.Classes
                     await conn.InsertAsync(new Lesson { lessonTitle = allSubjects[subjectID].GetName(), subjectID = subjectID, lessonTutor = tutor, lessonClassroom = classroom, lessonDate = lessonDateAssigned, lessonTimePeriod = j });
                 }
 
-                lessonDateAssigned.AddDays(1);
+                lessonDateAssigned = lessonDateAssigned.AddDays(1);
             }
 
             
@@ -181,14 +182,21 @@ namespace StudentOrganiser.Classes
         public async Task<List<Lesson>> GetLessonsForMonth(int month, int year)
         {
             await Init();
+            //await PopulateLessons();
 
-            
+            List<Lesson> lessonsThisMonth = new List<Lesson>();
 
-           var lessons = from t in conn.Table<Lesson>()
-                       where t.lessonDate.Month == month && t.lessonDate.Year == year
-                       select t;
-            List<Lesson> result = await lessons.ToListAsync();
-            return result;
+            List<Lesson> allLessons = await conn.Table<Lesson>().ToListAsync();
+
+            foreach (Lesson lesson in allLessons)
+            {
+                if(lesson.lessonDate.Month == month && lesson.lessonDate.Year == year)
+                {
+                    lessonsThisMonth.Add(lesson);
+                }
+            }
+
+            return lessonsThisMonth;
             
 
         }
