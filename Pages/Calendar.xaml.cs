@@ -12,6 +12,7 @@ public partial class Calendar : ContentPage
 	public Calendar()
 	{
 		InitializeComponent();
+		App.databaseConnector.PopulateLessons();
 		BuildCalendar(DateTime.Today);
 		selectedMonth = DateTime.Today.Month;
 		selectedYear = DateTime.Today.Year;

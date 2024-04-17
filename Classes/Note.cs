@@ -11,7 +11,7 @@ namespace StudentOrganiser.Classes
     [Table("note")]
     public class Note
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int noteID { get; set; }
 
         [MaxLength(50)]
