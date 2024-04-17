@@ -5,7 +5,7 @@ namespace StudentOrganiser.Pages
     public partial class ToDoList : ContentPage
     {
 
-        //AllTasks allToDos = new AllTasks();
+        
         List<ToDoTaskGroup> toDoTaskGroups = new List<ToDoTaskGroup>();
         List<TodoTaskView> todoTaskViews = new List<TodoTaskView>();
 

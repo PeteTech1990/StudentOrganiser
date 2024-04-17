@@ -1,12 +1,10 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+////This class is part of the StudentOrganiser.Classes namespace
 namespace StudentOrganiser.Classes
 {
+    /// <summary>
+    /// "AllTasks" class not required
+    /// </summary>
     public class AllTasks
     {
         private static List<ToDoListTask> taskList = new List<ToDoListTask>();
@@ -15,7 +13,7 @@ namespace StudentOrganiser.Classes
         { 
             
         }
-
+        
         public static ToDoListTask GetTask(int taskID)
         {
             foreach (ToDoListTask task in taskList)
