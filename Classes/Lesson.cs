@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 
-
+//This class is a part of the StudentOrganiser.Classes namespace
 namespace StudentOrganiser.Classes
 {
-    
+    /// <summary>
+    /// Class definition for the "Lesson" class
+    /// Attribute 
+    /// </summary>
     [Table("lesson")]
     public class Lesson
     {
