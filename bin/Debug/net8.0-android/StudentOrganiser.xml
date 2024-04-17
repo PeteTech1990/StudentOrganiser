@@ -4,6 +4,222 @@
         <name>StudentOrganiser</name>
     </assembly>
     <members>
+        <member name="T:StudentOrganiser.Classes.AllTasks">
+            <summary>
+            "AllTasks" class not required
+            </summary>
+        </member>
+        <member name="T:StudentOrganiser.Classes.DBConnect">
+            <summary>
+            Class definition for the "DBConnect" class
+            </summary>
+        </member>
+        <member name="F:StudentOrganiser.Classes.DBConnect.classrooms">
+            <summary>
+            Private property declaration:
+            The "classrooms" property is a String List object that is instantiated and set with 7 string objects, each representing the name of a classroom.
+            The "tutors" property is a String List object that is instantiated and set with 7 string objects, each representing the name of a classroom tutor.
+            (In the final version of the app, the classroom names and tutor names would be retrieved from the SQLite database)
+            The "connAsync" property is a SQLite Async connection object that will be used to communicate with the app's embedded SQLite database asynchronously 
+            (i.e in another processor thread than the UI thread) and the "connSync" property is a SQLite Sync connection object 
+            that will be used to communicate with the database synchronously (using the UI thread).
+            The "dbPath" property is a string object that will be used to hold the path to the embedded SQLite database.
+            The "allSubjects" property is an ObservableCollection object, which represents a collection of "Subject" objects. This ObservableCollection will hold
+            all of the "Subject" objects that are retrieved from the SQLite database.
+            </summary>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.#ctor(System.String)">
+            <summary>
+            Class constructor method definition. This method takes one string parameter "dbPath".
+            The method takes the value of the passed parameter and assigns it to the local private property "dbPath".
+            This will assign the path to the SQLite database to the "dbPath" property.
+            The method calls the "PopulateSubjects" method.
+            </summary>
+            <param name="dbPath">The path to the SQLite database is passed into this string parameter</param>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.Init">
+            <summary>
+            Public method definition.
+            The method does not accept any parameters.
+            This method is used to instantiate the "connAsync" property, forming the connection to the SQLite database.
+            Then, 3 tables are created in the database (if they do not already exist)
+            This method is defined "async", so that the database communication processes can execute in a thread other than the UI thread. This will stop the database communication
+            processes from causing the app to "hang" until they are complete. 
+            </summary>
+            <returns>The method returns a "Threading.Tasks.Task" object, representing the thread that this asynchronous task
+            is being executed on.</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.AddTaskToDatabase(System.String,System.String,System.Boolean,System.Int32,System.DateTime,System.Int32)">
+            --------- ToDoListTask object methods ---------------
+            <summary>
+            Public method definition.
+            This method accepts 6 parameters.
+            This method is defined "async".
+            This method is used to instantiate a "ToDoListTask" object, and then store the properties of that object to a record in the database.
+            This method is called when the user creates a new To Do List task.
+            </summary>
+            <param name="title">This string parameter represents the title of the newly created to do list task</param>
+            <param name="description">This string parameter represents the description of the newly created to do list task</param>
+            <param name="importance">This boolean parameter represents the whether or not this task has been marked as "important"</param>
+            <param name="subjectID">This integer parameter represents the unique ID for the Subject Object that has been associated with the newly created task</param>
+            <param name="dueDate">This DateTime parameter represents the due date of the newly created task</param>
+            <param name="recurrenceAddition">This integer parameter represents the increment value for a recurring task. For example, a value of 1 means
+            that the task recurs every day and a value of 7 means the task recurs every week.</param>
+            <returns>The method returns a "Threading.Tasks.Task" object, representing the thread that this asynchronous task
+            is being executed on.</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.GetAllToDoListTasks">
+            <summary>
+            Public method definition.
+            This method accepts 0 parameters.
+            This method is defined "async".
+            This method is used to perform a SELECT query on the "ToDoListTask" table in the database, and then return all records as a List of "ToDoListTask" objects.
+            This method is called when the "ToDoList.xaml.cs" requests all To do list tasks from the database, in order to display them.
+            </summary>
+            <returns>The method returns a List of ToDoListTask objects, stored within a "Threading.Tasks.Task" object.</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.RemoveTaskFromDatabase(System.Int32)">
+            <summary>
+            Public method definition.
+            This method accepts 1 parameter.
+            This method is defined "async".
+            This method is used to perform a DELETE query on the "ToDoListTask" table in the database, in order to delete a single record.
+            This method is called when the user completes or deletes a task from the to do list.
+            </summary>
+            <param name="id">This parameter represents the unique ID for the task that the user has completed or deleted</param>
+            <returns>The method returns a "Threading.Tasks.Task" object, representing the thread that this asynchronous task
+            is being executed on.</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.GetTaskDetails(System.Int32)">
+            <summary>
+            Public method definition.
+            This method accepts 1 parameter.
+            This method is defined "async".
+            This method is used to perform a SELECT query on the "ToDoListTask" table in the database, in order to retrieve a single record.
+            This method is called when the user wants to retrieve the details for a specific To do List Task.
+            </summary>
+            <param name="id">This parameter represents the unique ID for the task that the user wishes to retrieve</param>
+            <returns>The method returns a ToDoListTask object, stored within a "Threading.Tasks.Task" object.</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.GetAllLocations">
+            --------- Campus Map methods ---------------
+            <summary>
+            Public method definition.
+            This method accepts 0 parameters.
+            This method is used to instantiate and return a List of "MapLocation" objects.
+            This method is called when the user launches the "CampusMaps" page.
+            </summary>
+            <returns>This method returns an "ObservableCollection" of MapLocation objects</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.PopulateSubjects">
+            --------- Subject object methods ---------------
+            <summary>
+            Public method definition.
+            This method accepts 0 parameters and returns no object.
+            This method is used to instantiate 3 "Subject" objects, and store them as records in the database, for the purposes of this prototype app.
+            This method is called as part of the constructor method for this class definition.
+            </summary>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.GetAllSubjects">
+            <summary>
+            Public method definition.
+            This method accepts 0 parameters.
+            This method is used to return the local ObservableCollection object "allSubjects" to the caller.
+            This method is called whenever the application needs to query the list of available subjects that a to do list task, a note or a lesson can be categorized into
+            </summary>
+            <returns>This method returns an "ObservableCollection" of Subject objects</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.GetSubjectName(System.Int32)">
+            <summary>
+            Public method definition.
+            This method accepts 1 parameter.
+            This method is used to return a string object that represents the name assigned to a particular "Subject" object.
+            This method is called whenever the application needs to know the name assigned to a Subject object
+            </summary>
+            <param name="subjectID">This parameter represents the unique identifier for the Subject object that the application is requesting the name of</param>
+            <returns>This method returns a nullable string object</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.GetSubjectColour(System.Int32)">
+            <summary>
+            Public method definition.
+            This method accepts 1 parameter.
+            This method is used to return a Color object that represents the colour assigned to a particular "Subject" object.
+            This method is called whenever the application needs to know the colour assigned to a Subject object
+            </summary>
+            <param name="subjectID">This parameter represents the unique identifier for the Subject object that the application is requesting the colour of</param>
+            <returns>This method returns a Color object</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.GetAllNotes">
+            --------- Note object methods ---------------
+            <summary>
+            Public method definition.
+            This method accepts 0 parameters.
+            This method is defined "async".
+            This method is used to perform a SELECT query on the "Note" table in the database, and then return all records as a List of "Note" objects.
+            This method is called when the "Notes.xaml.cs" requests all notes from the database, in order to display them.
+            </summary>
+            <returns>The method returns a List of Note objects, stored within a "Threading.Tasks.Task" object.</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.RemoveNoteFromDatabase(System.Int32)">
+            <summary>
+            Public method definition.
+            This method accepts 1 parameter.
+            This method is defined "async".
+            This method is used to perform a DELETE query on the "Note" table in the database, in order to delete a single record.
+            This method is called when the user deletes a note from the notes page.
+            </summary>
+            <param name="id">This parameter represents the unique ID for the note that the user has deleted</param>
+            <returns>The method returns a "Threading.Tasks.Task" object, representing the thread that this asynchronous task
+            is being executed on.</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.AddNoteToDatabase(System.String,System.String,System.Int32,System.String,System.String,System.DateTime,System.Int32)">
+            <summary> 
+            Public method definition.
+            This method accepts 7 parameters.
+            This method is defined "async".
+            This method is used to instantiate a "Note" object, and then store the properties of that object to a record in the database.
+            This method is called when the user creates a new note on the notes page.
+            </summary>        
+            <param name="title">This string parameter represents the title of the newly created note</param>
+            <param name="text">This string parameter represents the text field of the newly created note</param>
+            <param name="subjectID">This integer parameter represents the unique ID for the Subject Object that has been associated with the newly created note</param>
+            <param name="audio">This string parameter represents the path to the audio file for the newly created note</param>
+            <param name="video">This string parameter represents the path to the video file for the newly created note</param>
+            <param name="currentDateTime">This DateTime parameter represents the date that the note was created</param>
+            <param name="noteID">This integer parameter represents the unique identifier for the newly created note</param>
+            <returns>The method returns a "Threading.Tasks.Task" object, representing the thread that this asynchronous task
+            is being executed on.</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.PopulateLessons">
+            --------- Lesson object methods ---------------
+            <summary>
+            Public method definition.
+            This method accepts 0 parameters.
+            This method is defined "async".
+            This method is used, for the purposes of this prototype, to create Lesson objects that will be used to build the student's timetable
+            This method is called when the user navigates to the Calendar page, once per app execution.
+            </summary>
+            <returns>The method returns a "Threading.Tasks.Task" object, representing the thread that this asynchronous task
+            is being executed on.</returns>
+        </member>
+        <member name="M:StudentOrganiser.Classes.DBConnect.GetLessonsForMonth(System.Int32,System.Int32)">
+            <summary>
+            Public method definition.
+            This method accepts 2 parameters.
+            This method is defined "async".
+            This method is used to perform a SELECT query on the "Note" table in the database, filter the returned records, then return the filtered records as a List of "Lesson" objects.
+            This method is called when the "Calendar.xaml.cs" requests all lessons from the database that are timetabled within a specific calendar month.
+            </summary>
+            <param name="month">This integer parameter represents the calendar month that the user currently has displayed on the Calendar Page</param>
+            <param name="year">This integer parameter represents the calendar year that the user currently has displayed on the Calendar Page</param>
+            <returns>The method returns a List of Lesson objects, stored within a "Threading.Tasks.Task" object.</returns>
+        </member>
+        <member name="T:StudentOrganiser.Classes.Lesson">
+            <summary>
+            Class definition for the "Lesson" class
+            Attribute 
+            </summary>
+        </member>
         <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
             <summary>
             Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color

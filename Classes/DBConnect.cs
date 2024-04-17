@@ -23,14 +23,17 @@ namespace StudentOrganiser.Classes
         /// The "classrooms" property is a String List object that is instantiated and set with 7 string objects, each representing the name of a classroom.
         /// The "tutors" property is a String List object that is instantiated and set with 7 string objects, each representing the name of a classroom tutor.
         /// (In the final version of the app, the classroom names and tutor names would be retrieved from the SQLite database)
-        /// The "conn" property is a SQLite Async connection object that will be used to communicate with the app's embedded SQLite database.
+        /// The "connAsync" property is a SQLite Async connection object that will be used to communicate with the app's embedded SQLite database asynchronously 
+        /// (i.e in another processor thread than the UI thread) and the "connSync" property is a SQLite Sync connection object 
+        /// that will be used to communicate with the database synchronously (using the UI thread).
         /// The "dbPath" property is a string object that will be used to hold the path to the embedded SQLite database.
         /// The "allSubjects" property is an ObservableCollection object, which represents a collection of "Subject" objects. This ObservableCollection will hold
         /// all of the "Subject" objects that are retrieved from the SQLite database.
         /// </summary>
         private List<string> classrooms = new List<string>() { "C110", "D110", "E110", "F110", "G110", "H110", "I110" };
         private List<string> tutors = new List<string>() { "Mr Griffiths", "Mrs Rutter", "Mr Gilmartin", "Mr Jones", "Mrs Summers" };
-        private SQLiteAsyncConnection conn;
+        private SQLiteAsyncConnection connAsync;
+        private SQLiteConnection connSync;
         private string dbPath;
         private ObservableCollection<Subject> allSubjects = new ObservableCollection<Subject>();
 
@@ -52,7 +55,7 @@ namespace StudentOrganiser.Classes
         /// <summary>
         /// Public method definition.
         /// The method does not accept any parameters.
-        /// This method is used to instantiate the "conn" property, forming the connection to the SQLite database.
+        /// This method is used to instantiate the "connAsync" property, forming the connection to the SQLite database.
         /// Then, 3 tables are created in the database (if they do not already exist)
         /// This method is defined "async", so that the database communication processes can execute in a thread other than the UI thread. This will stop the database communication
         /// processes from causing the app to "hang" until they are complete. 
@@ -62,22 +65,39 @@ namespace StudentOrganiser.Classes
         public async Task Init()
         {
             ///If Statement.
-            ///If the value currently assigned to the "conn" property is not "null" (meaning it has already been instantiated)
+            ///If the value currently assigned to the "connAsync" property is not "null" (meaning it has already been instantiated)
             ///Then "return" and do not execute the remainder of the "Init" method.
-            ///This statement prevents the "conn" property from being instantiated more than once per execution of the program, preventing possible errors.
-            if (conn != null)
+            ///This statement prevents the "connAsync" property from being instantiated more than once per execution of the program, preventing possible errors.
+            if (connAsync != null)
                 return;
+            else
+            {
+                ///If the value of "connAsync" was null, then it now needs to be instantiated. 
+                ///This line of code instantiates the property, passing the value of "dbPath" as a parameter.
+                ///This will create a link to the SQLite database located at the path stored in the "dbPath" property
+                connAsync = new SQLiteAsyncConnection(dbPath);
+            }
 
-            ///If the value of "conn" was null, then it now needs to be instantiated. 
-            ///This line of code instantiates the property, passing the value of "dbPath" as a parameter.
-            ///This will create a link to the SQLite database located at the path stored in the "dbPath" property
-            conn = new SQLiteAsyncConnection(dbPath);
+
+            ///If Statement.
+            ///If the value currently assigned to the "connSync" property is not "null" (meaning it has already been instantiated)
+            ///Then "return" and do not execute the remainder of the "Init" method.
+            ///This statement prevents the "connSync" property from being instantiated more than once per execution of the program, preventing possible errors.
+            if (connSync != null)
+                return;
+            else
+            {
+                ///If the value of "connAsync" was null, then it now needs to be instantiated. 
+                ///This line of code instantiates the property, passing the value of "dbPath" as a parameter.
+                ///This will create a link to the SQLite database located at the path stored in the "dbPath" property
+                connSync = new SQLiteConnection(dbPath);
+            }
 
             ///These 3 lines are used to create 3 tables in the database, if they do not already exist.
             ///The schemas for these tables are based on the properties of 3 classes within the program, namely "ToDoListTask", "Note" and "Lesson"
-            await conn.CreateTableAsync<ToDoListTask>();
-            await conn.CreateTableAsync<Note>();
-            await conn.CreateTableAsync<Lesson>();
+            await connAsync.CreateTableAsync<ToDoListTask>();
+            await connAsync.CreateTableAsync<Note>();
+            await connAsync.CreateTableAsync<Lesson>();
         }
 
 
@@ -108,9 +128,9 @@ namespace StudentOrganiser.Classes
             await Init();
 
             ///First, create a new "ToDoListTask" object, using the 6 passed parameters as the properties of the new object.
-            ///Then, using the "InsertASync" method of the "conn" object, insert a new record into the "ToDoListTask" table in the SQLite database, using the properties of the
+            ///Then, using the "InsertASync" method of the "connAsync" object, insert a new record into the "ToDoListTask" table in the SQLite database, using the properties of the
             ///new ToDoListTask object as the values of the record.
-            await conn.InsertAsync(new ToDoListTask { taskTitle = title, taskDescription = description, taskImportance = importance, subjectID = subjectID, taskDueDate = dueDate, recurrenceAddition = recurrenceAddition });
+            await connAsync.InsertAsync(new ToDoListTask { taskTitle = title, taskDescription = description, taskImportance = importance, subjectID = subjectID, taskDueDate = dueDate, recurrenceAddition = recurrenceAddition });
 
 
         }
@@ -130,10 +150,10 @@ namespace StudentOrganiser.Classes
             ///not already created
             await Init();
 
-            ///Using the "ToListAsync" method on a specific "Table" property of the "conn" object, retrieve all of the records in the "ToDoListTask"
+            ///Using the "ToListAsync" method on a specific "Table" property of the "connAsync" object, retrieve all of the records in the "ToDoListTask"
             ///table, create a "ToDoListTask" object for each record, then create a List containing all of these "ToDoListTask" objects.
             ///This list of objects is then returned to the caller.
-            return await conn.Table<ToDoListTask>().ToListAsync();
+            return await connAsync.Table<ToDoListTask>().ToListAsync();
         }
 
 
@@ -153,9 +173,9 @@ namespace StudentOrganiser.Classes
             ///not already created
             await Init();
 
-            ///Using the "DeleteAsync" method on a specific "Table" property of the "conn" object, delete a single record from the "ToDoListTask"
+            ///Using the "DeleteAsync" method on a specific "Table" property of the "connAsync" object, delete a single record from the "ToDoListTask"
             ///table, by using the value of "id" to indicate which record to delete.
-            await conn.DeleteAsync<ToDoListTask>(id);
+            await connAsync.DeleteAsync<ToDoListTask>(id);
         }
 
 
@@ -174,7 +194,7 @@ namespace StudentOrganiser.Classes
         {
             ///A variable named "task" is created, and instantiated with a LINQ query.
             ///The query SELECTS all records from the ToDoListTask table WHERE the taskID value of the record matches the value of the "id" parameter
-            var task = from t in conn.Table<ToDoListTask>()
+            var task = from t in connAsync.Table<ToDoListTask>()
                        where t.taskID == id
                        select t;
             
@@ -337,10 +357,10 @@ namespace StudentOrganiser.Classes
             ///not already created
             await Init();
 
-            ///Using the "ToListAsync" method on a specific "Table" property of the "conn" object, retrieve all of the records in the "Note"
+            ///Using the "ToListAsync" method on a specific "Table" property of the "connAsync" object, retrieve all of the records in the "Note"
             ///table, create a "Note" object for each record, then create a List containing all of these "Note" objects.
             ///This list of objects is then returned to the caller.
-            return await conn.Table<Note>().ToListAsync();
+            return await connAsync.Table<Note>().ToListAsync();
         }
 
 
@@ -360,9 +380,9 @@ namespace StudentOrganiser.Classes
             ///not already created
             await Init();
 
-            ///Using the "DeleteAsync" method on a specific "Table" property of the "conn" object, delete a single record from the "Note"
+            ///Using the "DeleteAsync" method on a specific "Table" property of the "connAsync" object, delete a single record from the "Note"
             ///table, by using the value of "id" to indicate which record to delete.
-            await conn.DeleteAsync<Note>(id);
+            await connAsync.DeleteAsync<Note>(id);
         }
 
 
@@ -390,9 +410,9 @@ namespace StudentOrganiser.Classes
             await Init();
 
             ///First, create a new "Note" object, using the 7 passed parameters as the properties of the new object.
-            ///Then, using the "InsertASync" method of the "conn" object, insert a new record into the "Note" table in the SQLite database, using the properties of the new Note object
+            ///Then, using the "InsertASync" method of the "connAsync" object, insert a new record into the "Note" table in the SQLite database, using the properties of the new Note object
             ///as the values of the record.
-            await conn.InsertAsync(new Note { noteTitle = title, noteText = text, subjectID = subjectID, noteAudio = audio, noteVideo = video, noteDate = currentDateTime, noteID = noteID });
+            await connAsync.InsertAsync(new Note { noteTitle = title, noteText = text, subjectID = subjectID, noteAudio = audio, noteVideo = video, noteDate = currentDateTime, noteID = noteID });
 
 
         }
@@ -411,14 +431,14 @@ namespace StudentOrganiser.Classes
         /// </summary>
         /// <returns>The method returns a "Threading.Tasks.Task" object, representing the thread that this asynchronous task
         /// is being executed on.</returns>
-        public async Task PopulateLessons()
+        public void PopulateLessons()
         {
             ///Call the Init method to instantiate the database connection object, if not already instantiated, and create the database tables, if 
             ///not already created
-            await Init();
+            Init();
 
-            ///Using the "DeleteAllAsync" method on a specific "Table" property of the "conn" object, delete all records from the "Lesson" table
-            await conn.DeleteAllAsync<Lesson>();
+            ///Using the "DeleteAllAsync" method on a specific "Table" property of the "connAsync" object, delete all records from the "Lesson" table
+            connSync.DeleteAll<Lesson>();
 
 
             ///Declare and instantiate a new "Random" object called randomiser. This object will be used to select random subjects, tutors and classrooms for each timetabled
@@ -426,9 +446,9 @@ namespace StudentOrganiser.Classes
             Random randomiser = new Random();
 
             ///Declare and instantiate a new DateTime object called workingDate. This object will be used to assign a value to the "lessonDate" property of newly created Lesson objects
-            ///The initial value for "workingDate" is 50 days before the current date and time (obtained by calling the "RemoveDays" method (passing a value of 50)
+            ///The initial value for "workingDate" is 50 days before the current date and time (obtained by calling the "AddDays" method (passing a value of -50)
             ///on the DateTime object that is returned when the "Now" method of the DateTime class is called)
-            DateTime workingDate = DateTime.Now().RemoveDays(50);
+            DateTime workingDate = DateTime.Now.AddDays(-50);
 
 
             ///For loop.
@@ -444,9 +464,10 @@ namespace StudentOrganiser.Classes
                 ///Condition = while the "DayOfWeek" property of the "workingDate" object is equal to the enum value of "DayOfWeek.Saturday" or "DayOfWeek.Sunday"
                 while (workingDate.DayOfWeek == DayOfWeek.Saturday || workingDate.DayOfWeek == DayOfWeek.Sunday)
                 {
-                    ///If the While loop condition is met, the "AddDays" method is called on the "workingDate" object, passing 1 as a parameter. This will advance the current 
+                    ///If the While loop condition is met, the "AddDays" method is called on the "workingDate" object, passing 1 as a parameter. Then this 
+                    ///new value is re-assigned to the workingDate object. This will advance the current 
                     ///date assigned to "workingDate" by 1 day.
-                    workingDate.AddDays(1);
+                    workingDate = workingDate.AddDays(1);
 
                     ///This while loop will ensure that the date value of "workingDate" is not on a weekend.
                 }
@@ -479,9 +500,9 @@ namespace StudentOrganiser.Classes
                     ///------The string value that was retrieved from the "classrooms" List using a randomly generated integer, and then assigned to "classroom"
                     ///------The current value of "workingDate" (representing the date of the lesson)
                     ///------The current value of "j" (representing the lesson period for the lesson)
-                    ///Then, using the "InsertASync" method of the "conn" object, insert a new record into the "Lesson" table in the SQLite database, using the properties of the new Lesson object
+                    ///Then, using the "InsertASync" method of the "connAsync" object, insert a new record into the "Lesson" table in the SQLite database, using the properties of the new Lesson object
                     ///as the values of the record.
-                    await conn.InsertAsync(new Lesson { lessonTitle = allSubjects[subjectID].GetName(), subjectID = subjectID, lessonTutor = tutor, lessonClassroom = classroom, lessonDate = workingDate, lessonTimePeriod = j });
+                    connSync.Insert(new Lesson { lessonTitle = allSubjects[subjectID].GetName(), subjectID = subjectID, lessonTutor = tutor, lessonClassroom = classroom, lessonDate = workingDate, lessonTimePeriod = j });
                 }
 
                 //--Increment the value of "workingDate" by 1, by calling the "AddDays" method and passing a value of 1. This will cause the next iteration of the outer for loop
@@ -503,18 +524,18 @@ namespace StudentOrganiser.Classes
         /// <param name="month">This integer parameter represents the calendar month that the user currently has displayed on the Calendar Page</param>
         /// <param name="year">This integer parameter represents the calendar year that the user currently has displayed on the Calendar Page</param>
         /// <returns>The method returns a List of Lesson objects, stored within a "Threading.Tasks.Task" object.</returns>
-        public async Task<List<Lesson>> GetLessonsForMonth(int month, int year)
+        public List<Lesson> GetLessonsForMonth(int month, int year)
         {
             ///Call the Init method to instantiate the database connection object, if not already instantiated, and create the database tables, if 
             ///not already created
-            await Init();
+            Init();
             
             //Create and instantiate a new List object, called "lessonsThisMonth", which will contain "Lesson" objects
             List<Lesson> lessonsThisMonth = new List<Lesson>();
 
-            ///Using the "ToListAsync" method on a specific "Table" property of the "conn" object, retrieve all of the records in the "Lesson"
+            ///Using the "ToListAsync" method on a specific "Table" property of the "connAsync" object, retrieve all of the records in the "Lesson"
             ///table, create a "Lesson" object for each record, then create a List containing all of these "Lesson" objects.            
-            List<Lesson> allLessons = await conn.Table<Lesson>().ToListAsync();
+            List<Lesson> allLessons = connSync.Table<Lesson>().ToList();
 
 
             ///Foreach loop.

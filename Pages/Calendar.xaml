@@ -41,7 +41,7 @@
         <Border Grid.Row="3">
             <Grid ColumnDefinitions="2*, *" RowDefinitions="2*, *, *">
                 <Label x:Name="Subject" Grid.Row="0" Grid.Column="0"/>
-                <Label x:Name="Teacher" Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="Tutor" Grid.Row="1" Grid.Column="0"/>
                 <Label x:Name="Room" Grid.Row="2" Grid.Column="0"/>
                 <Image x:Name="subjectIcon" Source="english.jpg" Grid.Column="1" Grid.RowSpan="3"/>
             </Grid>

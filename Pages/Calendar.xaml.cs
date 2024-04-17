@@ -1,3 +1,4 @@
+
 using StudentOrganiser.Classes;
 using System.Globalization;
 
@@ -8,26 +9,47 @@ public partial class Calendar : ContentPage
 
 	private int selectedYear;
 	private int selectedMonth;
+	private List<Lesson> lessonsForThisMonth = new List<Lesson>();
 
-	public Calendar()
+
+    public Calendar()
 	{
 		InitializeComponent();
-		App.databaseConnector.PopulateLessons();
+		//App.databaseConnector.PopulateLessons();
 		BuildCalendar(DateTime.Today);
 		selectedMonth = DateTime.Today.Month;
 		selectedYear = DateTime.Today.Year;
+		try
+		{
 
-		PopulateLessons();
-		//DisplayToday();
+			PopulateLessonsAsync();
+		}
+		catch
+		{
+            DisplayAlert("Error", "Timetable build Failed", "OK");
+        }
+
+        //DisplayToday();
+    }
+
+	private void lessonLabel_Tapped(object sender, TappedEventArgs e)
+	{
+		Label selectedLabel = (Label)sender;
+		Lesson selectedLesson = lessonsForThisMonth.FirstOrDefault(l => l.lessonID == Convert.ToInt32(selectedLabel.AutomationId));
+
+		this.Subject.Text = App.databaseConnector.GetSubjectName(selectedLesson.GetSubjectID());
+		this.Tutor.Text = selectedLesson.lessonTutor;
+		this.Room.Text = selectedLesson.lessonClassroom;
+
 	}
 
-	//LessonClick event
+		//prevMonthCLick event
 
-	//prevMonthCLick event
+		//NextMonthClick event
 
-	//NextMonthClick event
 
-	private void BuildCalendar(DateTime currentCalendarMonth)
+
+		private void BuildCalendar(DateTime currentCalendarMonth)
 	{
         //https://stackoverflow.com/questions/6286868/convert-month-int-to-month-name
         currentMonth.Text = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(currentCalendarMonth.Month);
@@ -43,6 +65,7 @@ public partial class Calendar : ContentPage
 			dayLabel.Text = (i + 1).ToString();
 			dayLabel.FontSize = 15;
 			dayLabel.WidthRequest = 100;
+			
 			dayBorder.Content = dayLabel;
 			CalendarGrid.ColumnDefinitions.Add(dayColumn);
 			CalendarGrid.SetRow(dayBorder, 0);
@@ -51,27 +74,36 @@ public partial class Calendar : ContentPage
 		}
 	}
 
-	public async void PopulateLessons()
-	{
-		List<Lesson> lessonForThisMonth = await App.databaseConnector.GetLessonsForMonth(selectedMonth, selectedYear);
 
-		foreach (Lesson lesson in lessonForThisMonth)
-		{
-            
+    async Task PopulateLessonsAsync()
+	{
+		lessonsForThisMonth = App.databaseConnector.GetLessonsForMonth(selectedMonth, selectedYear);
+
+		await BuildTimetable(lessonsForThisMonth);
+    }
+
+	async Task BuildTimetable(List<Lesson> lessonsForThisMonth)
+	{
+        foreach (Lesson lesson in lessonsForThisMonth)
+        {
             Border lessonBorder = new Border();
             lessonBorder.Stroke = Color.FromRgb(0, 0, 0);
-			lessonBorder.BackgroundColor = App.databaseConnector.GetSubjectColour(lesson.GetSubjectID());
+            lessonBorder.BackgroundColor = App.databaseConnector.GetSubjectColour(lesson.GetSubjectID());
             Label lessonLabel = new Label();
             lessonLabel.Text = lesson.GetTitle();
-			lessonLabel.AutomationId = lesson.GetID().ToString();
+            lessonLabel.AutomationId = lesson.GetID().ToString();
             lessonLabel.FontSize = 15;
-			lessonLabel.TextColor = Color.FromRgb(255, 255, 255);
+            lessonLabel.TextColor = Color.FromRgb(255, 255, 255);
             lessonLabel.WidthRequest = 100;
+			lessonLabel.AutomationId = lesson.GetID().ToString();
+            TapGestureRecognizer lessonTap = new TapGestureRecognizer();
+            lessonTap.Tapped += lessonLabel_Tapped;
+            lessonLabel.GestureRecognizers.Add(lessonTap);
             lessonBorder.Content = lessonLabel;
             CalendarGrid.SetRow(lessonBorder, (lesson.GetTimePeriod() + 1));
             CalendarGrid.SetColumn(lessonBorder, lesson.GetDate().Day);
             CalendarGrid.Children.Add(lessonBorder);
         }
-		//await App.databaseConnector.PopulateLessons();
-	}
+    }
+
 }
