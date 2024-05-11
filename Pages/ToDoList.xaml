@@ -11,9 +11,9 @@
     <ScrollView>
     <Grid RowDefinitions="50, 50, *, 50" ColumnDefinitions="*">
         <Label Text="To do list" Background="Blue" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
-        <HorizontalStackLayout Grid.Row="1">
-            <Label x:Name="sortLabel" HorizontalOptions="Start"/>
-            <Picker Title="view" x:Name="sortSelect" HorizontalOptions="End" SelectedIndexChanged="SortSelectionChanged"/>
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Fill" Spacing="250" Margin="5" >            
+            <Picker Title="view" x:Name="sortSelect" HorizontalOptions="Start" VerticalOptions="End" SelectedIndexChanged="SortSelectionChanged" HeightRequest="40"/>
+                <Label x:Name="sortLabel" HorizontalOptions="End" VerticalOptions="End" HeightRequest="40" VerticalTextAlignment="Center"/>
         </HorizontalStackLayout>
         <VerticalStackLayout Spacing="15" Padding="20" x:Name="allTasks" Grid.Row="2">
 
@@ -24,6 +24,9 @@
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 Grid.Row="2"
+                HeightRequest="70"
+                WidthRequest="70"
+                Margin="5"
                 />
 
     </Grid>

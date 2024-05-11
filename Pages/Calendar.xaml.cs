@@ -10,6 +10,7 @@ public partial class Calendar : ContentPage
 	private int selectedYear;
 	private int selectedMonth;
 	private List<Lesson> lessonsForThisMonth = new List<Lesson>();
+	Label selectedLabel = null;
 
 
     public Calendar()
@@ -29,19 +30,37 @@ public partial class Calendar : ContentPage
             DisplayAlert("Error", "Timetable build Failed", "OK");
         }
 
-        //DisplayToday();
+		
     }
 
 	private void lessonLabel_Tapped(object sender, TappedEventArgs e)
 	{
-		Label selectedLabel = (Label)sender;
-		Lesson selectedLesson = lessonsForThisMonth.FirstOrDefault(l => l.lessonID == Convert.ToInt32(selectedLabel.AutomationId));
+		if (selectedLabel != null)
+		{
+			Border lessonBorder = (Border)selectedLabel.Parent;
+			lessonBorder.Stroke = Color.FromRgb(0, 0, 0);
+			lessonBorder.StrokeThickness = 1;
+		}
+        selectedLabel = (Label)sender;
+        SelectLesson();
+    }
 
-		this.Subject.Text = App.databaseConnector.GetSubjectName(selectedLesson.GetSubjectID());
-		this.Tutor.Text = selectedLesson.lessonTutor;
-		this.Room.Text = selectedLesson.lessonClassroom;
+	private void SelectLesson()
+	{
+		if (selectedLabel != null)
+		{
+			Border lessonBorder = (Border)selectedLabel.Parent;
+			lessonBorder.Stroke = Color.FromRgb(9, 190, 255);
+			lessonBorder.StrokeThickness = 4;
+		}
 
-	}
+        Lesson selectedLesson = lessonsForThisMonth.FirstOrDefault(l => l.lessonID == Convert.ToInt32(selectedLabel.AutomationId));
+
+        this.Subject.Text = App.databaseConnector.GetSubjectName(selectedLesson.GetSubjectID());
+        this.Tutor.Text = selectedLesson.lessonTutor;
+        this.Room.Text = selectedLesson.lessonClassroom;
+        this.subjectIcon.Source = $"{this.Subject.Text}.jpg";
+    }
 
 		//prevMonthCLick event
 
@@ -77,9 +96,11 @@ public partial class Calendar : ContentPage
 
     async Task PopulateLessonsAsync()
 	{
-		lessonsForThisMonth = App.databaseConnector.GetLessonsForMonth(selectedMonth, selectedYear);
+		lessonsForThisMonth = await App.databaseConnector.GetLessonsForMonth(selectedMonth, selectedYear);
 
 		await BuildTimetable(lessonsForThisMonth);
+
+        SelectLesson();
     }
 
 	async Task BuildTimetable(List<Lesson> lessonsForThisMonth)
@@ -93,9 +114,8 @@ public partial class Calendar : ContentPage
             lessonLabel.Text = lesson.GetTitle();
             lessonLabel.AutomationId = lesson.GetID().ToString();
             lessonLabel.FontSize = 15;
-            lessonLabel.TextColor = Color.FromRgb(255, 255, 255);
+            lessonLabel.TextColor = Color.FromRgb(0, 0, 0);
             lessonLabel.WidthRequest = 100;
-			lessonLabel.AutomationId = lesson.GetID().ToString();
             TapGestureRecognizer lessonTap = new TapGestureRecognizer();
             lessonTap.Tapped += lessonLabel_Tapped;
             lessonLabel.GestureRecognizers.Add(lessonTap);
@@ -103,7 +123,38 @@ public partial class Calendar : ContentPage
             CalendarGrid.SetRow(lessonBorder, (lesson.GetTimePeriod() + 1));
             CalendarGrid.SetColumn(lessonBorder, lesson.GetDate().Day);
             CalendarGrid.Children.Add(lessonBorder);
+
+			if (lesson.lessonDate.Date == new DateTime(2024, 5, 14))//DateTime.Today)
+			{
+				if ((DateTime.Now.Hour - 9) == lesson.GetTimePeriod())
+				{ 
+					selectedLabel = lessonLabel;
+				}
+			}
         }
     }
 
+
+    private void prevMonth_Clicked(object sender, EventArgs e)
+    {        
+        if (selectedMonth == 1) { selectedYear = selectedYear - 1; selectedMonth = 12; }
+        else { selectedMonth = selectedMonth - 1; }
+        currentMonth.Text = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(selectedMonth) + " " + selectedYear;
+
+        PopulateLessonsAsync();
+    }
+
+    private void nextMonth_Clicked(object sender, EventArgs e)
+    {
+        if (selectedMonth == 12) { selectedYear = selectedYear + 1; selectedMonth = 1; }
+        else { selectedMonth = selectedMonth + 1; }
+        currentMonth.Text = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(selectedMonth) + " " + selectedYear;
+		 
+        PopulateLessonsAsync();
+    }
+
+    private void ContentPage_Appearing(object sender, EventArgs e)
+    {
+        PopulateLessonsAsync();
+    }
 }

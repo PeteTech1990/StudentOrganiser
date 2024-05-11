@@ -5,12 +5,11 @@
 
     <ContentView.Resources>
         <Style x:Key="TaskLayout" TargetType="Grid">
-            <Setter Property="BackgroundColor" Value="LightGray"/>
             <Setter Property="HeightRequest" Value="75"/>
         </Style>
     </ContentView.Resources>
-    
-    <Grid x:Name="TaskView" Padding="10" Style="{StaticResource TaskLayout}" RowDefinitions="*,*" ColumnDefinitions="*,3*,*">
+    <Border x:Name="TaskBorder" Stroke="Black" StrokeThickness="2">
+        <Grid x:Name="TaskView" Padding="10" Style="{StaticResource TaskLayout}" RowDefinitions="*,*" ColumnDefinitions="*,3*,*">
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnTapTask"></TapGestureRecognizer>
         </Grid.GestureRecognizers>
@@ -56,12 +55,13 @@
         <Label 
             x:Name="TaskDueDate"            
             VerticalOptions="End" 
-            HorizontalOptions="End"/>
+            HorizontalOptions="Start"/>
             <Label 
             x:Name="TaskRecurrence"            
             VerticalOptions="End" 
-            HorizontalOptions="End"/>
+            HorizontalOptions="Start"/>
         </HorizontalStackLayout>
         </Grid>
+    </Border>
     
 </ContentView>

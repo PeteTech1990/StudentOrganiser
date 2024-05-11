@@ -36,6 +36,7 @@ namespace StudentOrganiser.Classes
         private SQLiteConnection connSync;
         private string dbPath;
         private ObservableCollection<Subject> allSubjects = new ObservableCollection<Subject>();
+        private List<DateTime> lessonPeriods;
 
         /// <summary>
         /// Class constructor method definition. This method takes one string parameter "dbPath".
@@ -44,7 +45,7 @@ namespace StudentOrganiser.Classes
         /// The method calls the "PopulateSubjects" method.
         /// </summary>
         /// <param name="dbPath">The path to the SQLite database is passed into this string parameter</param>
-        public DBConnect(string dbPath) 
+        public DBConnect(string dbPath)
         {
             this.dbPath = dbPath;
             PopulateSubjects();
@@ -197,7 +198,7 @@ namespace StudentOrganiser.Classes
             var task = from t in connAsync.Table<ToDoListTask>()
                        where t.taskID == id
                        select t;
-            
+
             ///Using the "FirstOrDefaultAsync" method of the "task" variable, the first record that matches the LINQ query is retrieved from the database
             ///(There should only be 1 matching record).
             ///The values from that record are then used to instantiate a ToDoListTask object, which is then returned to the caller.
@@ -216,10 +217,10 @@ namespace StudentOrganiser.Classes
         /// </summary>
         /// <returns>This method returns an "ObservableCollection" of MapLocation objects</returns>
         public ObservableCollection<MapLocation> GetAllLocations()
-        {          
+        {
             ///Create and instantiate an ObservableCollection object, called "allLocations", which will contain MapLocation objects.
             ObservableCollection<MapLocation> allLocations = new ObservableCollection<MapLocation>();
-            
+
             ///Instantiate 5 MapLocation objects, passing 5 values to the object constructor. Each time an object is created,
             ///it is added to the "allLocations" ObservableCollection
             allLocations.Add(new MapLocation("B100", "Classroom B100", 53.049888165360315, -2.99382285460766, 0));
@@ -279,7 +280,7 @@ namespace StudentOrganiser.Classes
             ///Foreach loop.
             ///Loops through each index in the "allSubjects" ObservableCollection, and on each iteration, assigns the "Subject" object referenced by the index
             ///to the "subject" Subject object
-            foreach(Subject subject in allSubjects)
+            foreach (Subject subject in allSubjects)
             {
                 //For each Subject in the allSubjects collection
 
@@ -456,7 +457,7 @@ namespace StudentOrganiser.Classes
             ///Initial value of i = 0
             ///Increment value = 1
             ///Condition = value of i is less than 100
-            for (int i = 0;i< 100;i++)
+            for (int i = 0; i < 100; i++)
             {
                 ///This for loop represents 100 days. This method will populate 100 days worth of timetabled lessons, around the current date
 
@@ -478,31 +479,33 @@ namespace StudentOrganiser.Classes
                 ///Initial value of j = 0
                 ///Increment value = 1
                 ///Condition = value of j is less than 7
-                for (int j = 0;j<7;j++)
+                for (int j = 0; j < 7; j++)
                 {
+                    if (j != 4)
+                    {
+                        ///This for loop represents 7 lessons within a day. This method will populate 7 timetabled lessons per day
 
-                    ///This for loop represents 7 lessons within a day. This method will populate 7 timetabled lessons per day
-
-                    ///Using the Random object created earlier in the method definition, values for the properties for the Lesson object that will be created
-                    ///are assigned here.
-                    ///"subjectID" is assigned a random integer between 0 and 2. This represents 1 of the 3 subjects that exist in this prototype version of the app.
-                    ///"tutor" is assigned the string value that corresponds to the value contained within the index of the "tutors" List that is referenced by a random integer between 0 and 4
-                    ///"classroom" is assigned the string value that corresponds to the value contained within the index of the "classrooms" List that is referenced by a random integer between 0 and 6
-                    int subjectID = randomiser.Next(0,3);
-                    string tutor = tutors[randomiser.Next(0,5)];
-                    string classroom = classrooms[randomiser.Next(0,7)];
+                        ///Using the Random object created earlier in the method definition, values for the properties for the Lesson object that will be created
+                        ///are assigned here.
+                        ///"subjectID" is assigned a random integer between 0 and 2. This represents 1 of the 3 subjects that exist in this prototype version of the app.
+                        ///"tutor" is assigned the string value that corresponds to the value contained within the index of the "tutors" List that is referenced by a random integer between 0 and 4
+                        ///"classroom" is assigned the string value that corresponds to the value contained within the index of the "classrooms" List that is referenced by a random integer between 0 and 6
+                        int subjectID = randomiser.Next(0, 3);
+                        string tutor = tutors[randomiser.Next(0, 5)];
+                        string classroom = classrooms[randomiser.Next(0, 7)];
 
 
-                    ///First, create a new "Lesson" object, using 6 values as the properties of the new object. These values are:
-                    ///------The string value returned when the "GetName" method is called on the Subject object that is referenced by the object in the "subjectID" index of the "allSubjects" ObservableCollection
-                    ///------The integer value that was randomly generated and assigned to "subjectID"
-                    ///------The string value that was retrieved from the "tutors" List using a randomly generated integer, and then assigned to "tutor"
-                    ///------The string value that was retrieved from the "classrooms" List using a randomly generated integer, and then assigned to "classroom"
-                    ///------The current value of "workingDate" (representing the date of the lesson)
-                    ///------The current value of "j" (representing the lesson period for the lesson)
-                    ///Then, using the "InsertASync" method of the "connAsync" object, insert a new record into the "Lesson" table in the SQLite database, using the properties of the new Lesson object
-                    ///as the values of the record.
-                    connSync.Insert(new Lesson { lessonTitle = allSubjects[subjectID].GetName(), subjectID = subjectID, lessonTutor = tutor, lessonClassroom = classroom, lessonDate = workingDate, lessonTimePeriod = j });
+                        ///First, create a new "Lesson" object, using 6 values as the properties of the new object. These values are:
+                        ///------The string value returned when the "GetName" method is called on the Subject object that is referenced by the object in the "subjectID" index of the "allSubjects" ObservableCollection
+                        ///------The integer value that was randomly generated and assigned to "subjectID"
+                        ///------The string value that was retrieved from the "tutors" List using a randomly generated integer, and then assigned to "tutor"
+                        ///------The string value that was retrieved from the "classrooms" List using a randomly generated integer, and then assigned to "classroom"
+                        ///------The current value of "workingDate" (representing the date of the lesson)
+                        ///------The current value of "j" (representing the lesson period for the lesson)
+                        ///Then, using the "InsertASync" method of the "connAsync" object, insert a new record into the "Lesson" table in the SQLite database, using the properties of the new Lesson object
+                        ///as the values of the record.
+                        connSync.Insert(new Lesson { lessonTitle = allSubjects[subjectID].GetName(), subjectID = subjectID, lessonTutor = tutor, lessonClassroom = classroom, lessonDate = workingDate, lessonTimePeriod = j });
+                    }
                 }
 
                 //--Increment the value of "workingDate" by 1, by calling the "AddDays" method and passing a value of 1. This will cause the next iteration of the outer for loop
@@ -510,7 +513,7 @@ namespace StudentOrganiser.Classes
                 workingDate = workingDate.AddDays(1);
             }
 
-            
+
         }
 
 
@@ -524,12 +527,12 @@ namespace StudentOrganiser.Classes
         /// <param name="month">This integer parameter represents the calendar month that the user currently has displayed on the Calendar Page</param>
         /// <param name="year">This integer parameter represents the calendar year that the user currently has displayed on the Calendar Page</param>
         /// <returns>The method returns a List of Lesson objects, stored within a "Threading.Tasks.Task" object.</returns>
-        public List<Lesson> GetLessonsForMonth(int month, int year)
+        public async Task<List<Lesson>> GetLessonsForMonth(int month, int year)
         {
             ///Call the Init method to instantiate the database connection object, if not already instantiated, and create the database tables, if 
             ///not already created
             Init();
-            
+
             //Create and instantiate a new List object, called "lessonsThisMonth", which will contain "Lesson" objects
             List<Lesson> lessonsThisMonth = new List<Lesson>();
 
@@ -560,9 +563,40 @@ namespace StudentOrganiser.Classes
 
             ///return the "lessonsThisMonth" List, which contains all of the Lesson objects that are timetabled within the current calendar month
             return lessonsThisMonth;
-            
+
 
         }
 
-    }
+    //    private void populateLessonPeriods()
+    //    {
+    //        lessonPeriods = new List<DateTime>();
+
+    //        for (int i = 9; i < 16; i++)
+    //        {
+    //            lessonPeriods.Add(new DateTime(DateOnly.FromDateTime(DateTime.Now), TimeOnly(9, 0, ))));
+    //    }
+    //    lessonPeriods.Add(new DateTime(DateOnly.FromDateTime(DateTime.Now), TimeOnly.FromDateTime(new DateTime(0, 0, 0, 10, 0, 0))));
+    //        lessonPeriods.Add(new DateTime(DateOnly.FromDateTime(DateTime.Now), TimeOnly.FromDateTime(new DateTime(0, 0, 0, 11, 0, 0))));
+    //        lessonPeriods.Add(new DateTime(DateOnly.FromDateTime(DateTime.Now), TimeOnly.FromDateTime(new DateTime(0, 0, 0, 12, 0, 0))));
+    //        lessonPeriods.Add(new DateTime(DateOnly.FromDateTime(DateTime.Now), TimeOnly.FromDateTime(new DateTime(0, 0, 0, 13, 0, 0))));
+    //        lessonPeriods.Add(new DateTime(DateOnly.FromDateTime(DateTime.Now), TimeOnly.FromDateTime(new DateTime(0, 0, 0, 14, 0, 0))));
+    //        lessonPeriods.Add(new DateTime(DateOnly.FromDateTime(DateTime.Now), TimeOnly.FromDateTime(new DateTime(0, 0, 0, 15, 0, 0))));
+    //    }
+
+    //public int getCurrentLessonPeriod()
+    //{
+    //    populateLessonPeriods();
+
+    //    for (int i = 0; i < lessonPeriods.Count; i++)
+    //    {
+    //        if (DateTime.Now >= lessonPeriods[i] && DateTime.Now < lessonPeriods[i + 1])
+    //        {
+    //            return i + 1;
+    //        }
+    //    }
+
+    //    return -1;
+    //}
+
+}
 }

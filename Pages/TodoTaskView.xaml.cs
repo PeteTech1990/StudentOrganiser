@@ -1,5 +1,4 @@
 ﻿
-
 using StudentOrganiser.Classes;
 
 namespace StudentOrganiser.Pages;
@@ -15,7 +14,8 @@ public partial class TodoTaskView : ContentView
     {
         InitializeComponent();
         this.toDoListTask = NewToDoListTask;
-        this.TaskTitle.Text = toDoListTask.GetTitle();        
+        this.TaskTitle.Text = toDoListTask.GetTitle();
+        SetTitleColour();
         this.TaskSubject.Text = toDoListTask.GetSubjectName();
         this.TaskFlag.Text = (toDoListTask.GetImportance() ? "!" : "");
         this.TaskRecurrence.Text = (toDoListTask.GetRecurrence() != 0 ? "🔄" : "");
@@ -30,10 +30,14 @@ public partial class TodoTaskView : ContentView
         await Shell.Current.GoToAsync($"tododetailspage?taskID={toDoListTask.GetID()}");
     }
         
-
-    public Grid GetView()
+    private void SetTitleColour()
     {
-        return this.TaskView;
+        this.TaskTitle.TextColor = App.databaseConnector.GetSubjectColour(this.toDoListTask.GetSubjectID());
+    }
+
+    public Border GetView()
+    {
+        return this.TaskBorder;
     }
 
     public ToDoListTask GetToDoTask()

@@ -68,11 +68,11 @@
           "dependencies": {
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0, )"
             },
             "CommunityToolkit.Maui.MediaElement": {
               "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[3.1.1, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -80,21 +80,25 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.3, )",
               "autoReferenced": true
+            },
+            "NetExtensions.Infra.SqliteBrowser": {
+              "target": "Package",
+              "version": "[1.0.6, )"
             },
             "Plugin.Maui.Audio": {
               "target": "Package",
@@ -139,11 +143,11 @@
           "dependencies": {
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0, )"
             },
             "CommunityToolkit.Maui.MediaElement": {
               "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[3.1.1, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -151,21 +155,25 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.3, )",
               "autoReferenced": true
+            },
+            "NetExtensions.Infra.SqliteBrowser": {
+              "target": "Package",
+              "version": "[1.0.6, )"
             },
             "Plugin.Maui.Audio": {
               "target": "Package",
@@ -210,11 +218,11 @@
           "dependencies": {
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0, )"
             },
             "CommunityToolkit.Maui.MediaElement": {
               "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[3.1.1, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -222,21 +230,25 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.3, )",
               "autoReferenced": true
+            },
+            "NetExtensions.Infra.SqliteBrowser": {
+              "target": "Package",
+              "version": "[1.0.6, )"
             },
             "Plugin.Maui.Audio": {
               "target": "Package",
@@ -282,11 +294,11 @@
           "dependencies": {
             "CommunityToolkit.Maui": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0, )"
             },
             "CommunityToolkit.Maui.MediaElement": {
               "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[3.1.1, )"
             },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
@@ -294,15 +306,19 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
             },
             "Microsoft.Maui.Controls.Maps": {
               "target": "Package",
-              "version": "[8.0.14, )"
+              "version": "[8.0.21, )"
+            },
+            "NetExtensions.Infra.SqliteBrowser": {
+              "target": "Package",
+              "version": "[1.0.6, )"
             },
             "Plugin.Maui.Audio": {
               "target": "Package",
