@@ -7,10 +7,11 @@
     
     <ContentView.Resources>
         <Style x:Key="NoteLayout" TargetType="Grid">
-            <Setter Property="BackgroundColor" Value="LightGray"/>
+            <Setter Property="BackgroundColor" Value="White"/>
         </Style>
     </ContentView.Resources>
 
+    <Border x:Name="NoteBorder" Stroke="Black" StrokeThickness="2" Padding="5">
     <Grid x:Name="NoteView" Padding="20" RowSpacing="10" Style="{StaticResource NoteLayout}" RowDefinitions="*,10*,*" ColumnDefinitions="*,*" MaximumHeightRequest="1200">
 
 
@@ -51,4 +52,5 @@
         Grid.Column="1"/>
 
     </Grid>
+    </Border>
 </ContentView>

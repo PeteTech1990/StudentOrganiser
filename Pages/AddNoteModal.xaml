@@ -2,32 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                x:Class="StudentOrganiser.Pages.AddNoteModal">
+    <Border Stroke="Black" StrokeThickness="2" HeightRequest="695">
     <Grid RowDefinitions="*, *, 8*, *, *" ColumnDefinitions="* , *" HeightRequest="700" RowSpacing="10" Padding="10">
         <Label FontSize="20" Text="Add a Note" HorizontalOptions="Start" Grid.Row="0" Grid.ColumnSpan="0"/>
     
         <Entry x:Name="title" Grid.Row="1" Grid.Column="0" Placeholder="Note title"/>
         
-            <HorizontalStackLayout Grid.Row="1" Grid.Column="1">
-                <Label Text="Subject:" HorizontalOptions="Start" VerticalOptions="End"/>
-                <Picker x:Name="subject" />
+            <HorizontalStackLayout Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Start">
+                <Label Text="Subject:" VerticalOptions="Center"/>
+                <Picker x:Name="subject" WidthRequest="75"/>
             </HorizontalStackLayout>
 
         <Border Grid.Row="2" Grid.ColumnSpan="2" Stroke="Black">
-            <VerticalStackLayout x:Name="NoteContent" Spacing="30">
-                <Entry x:Name="text" Placeholder="Note text" VerticalOptions="Start"/>
+            <Grid x:Name="NoteContent" RowDefinitions="8*,*">
+                <Entry x:Name="text" Placeholder="Type your note here" IsSpellCheckEnabled="True" VerticalOptions="FillAndExpand" Grid.Row="0"/>
                 
-            </VerticalStackLayout>
             
-        </Border>
-        <Border Grid.Row="3" Grid.ColumnSpan="2" Stroke="Black">
             
-            <HorizontalStackLayout Spacing="50">
-                <Button x:Name="AddAudio" Text="🔊" HorizontalOptions="Start" Clicked="OpenAudioModal"/>
-                <Button x:Name="AddVideo" Text="🎥" HorizontalOptions="End"  Clicked="OpenVideoModal"/>
-            </HorizontalStackLayout>
-        </Border>
+        
+            
+            <Grid ColumnDefinitions="*,*" Grid.Row="1">
+                <Button x:Name="AddAudio" Text="🔊" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OpenAudioModal" Grid.Column="0"/>
+                        <Button x:Name="AddVideo" Text="🎥" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="OpenVideoModal" Grid.Column="1"/>
+            </Grid>
+            </Grid>
+            </Border>
 
         <Button Text="Add" BackgroundColor="Blue" Clicked="AddNote" Grid.Row="4" Grid.Column="1" WidthRequest="70" HorizontalOptions="End"></Button>
 
     </Grid>
+    </Border>
 </ContentPage>

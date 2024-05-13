@@ -92,7 +92,6 @@ public partial class CampusMap : ContentPage
 	private async void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventArgs e)
 	{
 		colegCambriaMap.MapElements.Clear();
-		colegCambriaMap.Pins.Clear();
 
         Polyline navRoute = new Polyline
         {

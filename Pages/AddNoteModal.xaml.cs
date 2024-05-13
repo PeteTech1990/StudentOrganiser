@@ -66,7 +66,7 @@ public partial class AddNoteModal : ContentPage
             audioPlayer.ShouldShowPlaybackControls = true;
             audioPlayer.Source = audioPath;
             audioPlayer.ShouldAutoPlay = false;
-            audioPlayer.HeightRequest = 250;
+            audioPlayer.HeightRequest = 100;
             NoteContent.Children.Add(audioPlayer);
         }
 

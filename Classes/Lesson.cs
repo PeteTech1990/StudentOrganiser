@@ -10,11 +10,13 @@ namespace StudentOrganiser.Classes
 {
     /// <summary>
     /// Class definition for the "Lesson" class
-    /// Attribute 
+    /// Attribute "Table("lesson")" indicates that this class definition also constitutes a table definition for the local SQLite database
+    /// This class defines the schema for the "lesson" table.
     /// </summary>
     [Table("lesson")]
     public class Lesson
     {
+        //--Property/field definition
         [PrimaryKey, AutoIncrement]
         public int lessonID { get; set; }
 

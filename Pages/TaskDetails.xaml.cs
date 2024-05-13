@@ -38,7 +38,7 @@ public partial class TaskDetails : ContentPage
 		this.TaskPriority.Text = (thisTask.GetImportance() ? "!" : "");
 		this.TaskDescription.Text = thisTask.GetDescription();
 		this.TaskSubject.Text = thisTask.GetSubjectName();
-		this.TaskDueDate.Text = thisTask.GetDueDate().ToString("d");
+		this.TaskDueDate.Text = $"Due {thisTask.GetDueDate().ToString("d")}";
 		this.TaskRecurrence.Text = (thisTask.GetRecurrence() != 0) ? "🔄" : "";
 	}
 

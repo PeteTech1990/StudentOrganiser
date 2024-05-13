@@ -14,7 +14,7 @@ public partial class TodoTaskView : ContentView
     {
         InitializeComponent();
         this.toDoListTask = NewToDoListTask;
-        this.TaskTitle.Text = toDoListTask.GetTitle();
+        this.TaskTitle.Text = (toDoListTask.GetTitle().Length > 13) ? $"{toDoListTask.GetTitle().Substring(0, 12)}..." : toDoListTask.GetTitle();
         SetTitleColour();
         this.TaskSubject.Text = toDoListTask.GetSubjectName();
         this.TaskFlag.Text = (toDoListTask.GetImportance() ? "!" : "");

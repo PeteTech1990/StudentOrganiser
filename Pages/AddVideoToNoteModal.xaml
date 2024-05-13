@@ -3,17 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="StudentOrganiser.Pages.AddVideoToNoteModal">
-    <VerticalStackLayout>
-        <Border x:Name="MediaView" HeightRequest="300">
-            <toolkit:MediaElement x:Name="videoPlayer" HeightRequest="250" ShouldAutoPlay="False" ShouldShowPlaybackControls="true"/>
-        </Border>
-        <HorizontalStackLayout Spacing="50">
-            
-            <Button x:Name="LocalVideo" Clicked="AddLocalVideo" Text="⏺"></Button>
-            <Button x:Name="YoutubeVideo" Clicked="AddYoutubeVideo" Text="⏯"></Button>
-            
-        </HorizontalStackLayout>
-        
-        <Button x:Name="SaveVideo" Clicked="SaveVideoFile" Text="Done"></Button>
-    </VerticalStackLayout>
+    <Border Stroke="Black" StrokeThickness="2" HeightRequest="400" Margin="10">
+        <Grid RowDefinitions="4*, *, *">
+            <Border x:Name="MediaView" HeightRequest="250" Grid.Row="0" Margin="10">
+                <toolkit:MediaElement x:Name="videoPlayer" HeightRequest="250" ShouldAutoPlay="False" ShouldShowPlaybackControls="true"/>
+            </Border>
+            <Grid ColumnDefinitions="*,*" Grid.Row="1">
+
+                <Button x:Name="LocalVideo" Clicked="AddLocalVideo" Text="🎞" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large"></Button>
+                <Button x:Name="YoutubeVideo" Clicked="AddYoutubeVideo" Text="▶" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large"></Button>
+
+            </Grid>
+
+            <Button x:Name="SaveVideo" Clicked="SaveVideoFile" Text="Done"  Grid.Row="3" WidthRequest="100" HorizontalOptions="End" Margin="10" HeightRequest="50"></Button>
+        </Grid>
+    </Border>
 </ContentPage>

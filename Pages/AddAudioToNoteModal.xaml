@@ -3,13 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganiser.Pages.AddAudioToNoteModal"
              Title="AddAudioToNoteModal">
-    <VerticalStackLayout>
-        <HorizontalStackLayout Spacing="50">
-            <Button x:Name="Record" Clicked="RecordAudio" Text="⏺"></Button>
-            <Button x:Name="Playback" Clicked="PlaybackAudio" Text="⏯"></Button>
-            <Button x:Name="Reset" Clicked="ResetAudio" Text="🔄"></Button>
-        </HorizontalStackLayout>
-        
-        <Button x:Name="SaveAudio" Clicked="SaveAudioFile" Text="Done"></Button>
-    </VerticalStackLayout>
+    <Border Stroke="Black" StrokeThickness="2" HeightRequest="150">
+        <Grid RowDefinitions="*, *">
+            <Grid ColumnDefinitions="*, *, *" Grid.Row="0" VerticalOptions="End" Margin="10">
+                <Button x:Name="Record" Clicked="RecordAudio" Text="⏺" Grid.Column="0" HorizontalOptions="Center"></Button>
+                <Button x:Name="Playback" Clicked="PlaybackAudio" Text="⏯" Grid.Column="1" HorizontalOptions="Center"></Button>
+                <Button x:Name="Reset" Clicked="ResetAudio" Text="🔄" Grid.Column="2" HorizontalOptions="Center"></Button>
+            </Grid>
+
+            <Button x:Name="SaveAudio" Clicked="SaveAudioFile" Text="Done" Grid.Row="1" VerticalOptions="Start" Margin="10" HorizontalOptions="End" WidthRequest="100"></Button>
+        </Grid>
+    </Border>
 </ContentPage>

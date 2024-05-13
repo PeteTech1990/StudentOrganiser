@@ -15,7 +15,9 @@ public partial class NotesView : ContentView
         InitializeComponent();
         this.note = NewNote;
         this.NoteTitle.Text = note.GetTitle();
+        this.NoteTitle.TextColor = App.databaseConnector.GetSubjectColour(note.GetSubjectID());
         this.NoteSubject.Text = note.GetSubjectName();
+        this.NoteSubject.TextColor = App.databaseConnector.GetSubjectColour(note.GetSubjectID());
         this.NoteDate.Text = note.GetDate().ToString("d");
         this.NoteText.Text = note.GetText();
         this.main = mainPage;
@@ -29,7 +31,7 @@ public partial class NotesView : ContentView
             audioPlayer.ShouldShowPlaybackControls = true;
             audioPlayer.Source = note.GetAudio();
             audioPlayer.ShouldAutoPlay = false;
-            audioPlayer.HeightRequest = 250;
+            audioPlayer.HeightRequest = 100;            
             NoteContent.Children.Add(audioPlayer);
         }
 
@@ -72,6 +74,11 @@ public partial class NotesView : ContentView
     public Grid GetView()
     {
         return this.NoteView;
+    }
+
+    public Border GetBorder()
+    {
+        return this.NoteBorder;
     }
 
     public Note GetNote()

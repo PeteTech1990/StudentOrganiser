@@ -6,20 +6,20 @@
     <Grid HeightRequest="300" WidthRequest="300" BackgroundColor="AliceBlue" ColumnDefinitions="2*,*" RowDefinitions="*, 2*, *">
         
         
-        <Label x:Name="TaskTitle" Grid.Row="0" Grid.Column="0" TextColor="Black" Padding="20" FontSize="20" FontAttributes="Bold"></Label>
-        <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+        <Label x:Name="TaskTitle" Grid.Row="0" Grid.Column="0" TextColor="Black" Padding="20" FontSize="20" FontAttributes="Bold" HeightRequest="100"></Label>
+        <VerticalStackLayout Grid.Row="0" Grid.Column="1" Padding="10">
             <Button Text="Delete Task" FontSize="15" Clicked="DeleteTask"></Button>
-            <Label x:Name="TaskPriority" TextColor="Red" HorizontalTextAlignment="End" Padding="20"></Label>
+            <Label x:Name="TaskPriority" TextColor="Red" HorizontalTextAlignment="End" FontSize="50"></Label>
             
         </VerticalStackLayout>
 
 
         <Label x:Name="TaskDescription" Grid.Row="1" Grid.ColumnSpan="2" Padding="20"></Label>
 
-        <Label x:Name="TaskSubject" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="End" Padding="20"></Label>
-        <HorizontalStackLayout Grid.Row="2" Grid.Column="1">
-            <Label x:Name="TaskDueDate"  VerticalTextAlignment="End" Padding="20"></Label>
-            <Label x:Name="TaskRecurrence" VerticalTextAlignment="End" Padding="20"/>
+        <Label x:Name="TaskSubject" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" Padding="20" WidthRequest="100" HorizontalOptions="Start"></Label>
+        <HorizontalStackLayout Grid.Row="2" Grid.Column="1" WidthRequest="170" Spacing="15">
+            <Label x:Name="TaskDueDate"  VerticalTextAlignment="Center"></Label>
+            <Label x:Name="TaskRecurrence" VerticalTextAlignment="Center"/>
         </HorizontalStackLayout>
 
     </Grid>

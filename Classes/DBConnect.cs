@@ -248,9 +248,9 @@ namespace StudentOrganiser.Classes
         {
             ///3 Subject objects are created, each time passing 3 parameters to the object constructor. Each newly created Subject object is 
             ///added to the "allSubjects" local ObservableCollection property
-            allSubjects.Add(new Subject(0, "English", Color.FromRgb(0, 255, 0)));
-            allSubjects.Add(new Subject(1, "Science", Color.FromRgb(255, 0, 0)));
-            allSubjects.Add(new Subject(2, "PE", Color.FromRgb(255, 255, 0)));
+            allSubjects.Add(new Subject(0, "English", Color.FromRgb(41, 76, 144)));
+            allSubjects.Add(new Subject(1, "Science", Color.FromRgb(105, 36, 22)));
+            allSubjects.Add(new Subject(2, "PE", Color.FromRgb(142, 158, 39)));
         }
 
         /// <summary>

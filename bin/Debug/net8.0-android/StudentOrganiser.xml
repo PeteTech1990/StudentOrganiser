@@ -217,7 +217,8 @@
         <member name="T:StudentOrganiser.Classes.Lesson">
             <summary>
             Class definition for the "Lesson" class
-            Attribute 
+            Attribute "Table("lesson")" indicates that this class definition also constitutes a table definition for the local SQLite database
+            This class defines the schema for the "lesson" table.
             </summary>
         </member>
         <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">

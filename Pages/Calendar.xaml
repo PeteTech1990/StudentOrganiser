@@ -7,44 +7,44 @@
 
     <Grid RowDefinitions="50, 50, *, 100" ColumnDefinitions="*">
         <Label Text="Calendar" Background="Blue" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
-        <HorizontalStackLayout Grid.Row="1">
-            <Button x:Name="prevMonth" Text="&lt;" Clicked="prevMonth_Clicked"/>
-            <Label x:Name="currentMonth"/>
-            <Button x:Name="nextMonth" Text="&gt;" Clicked="nextMonth_Clicked"/>
-        </HorizontalStackLayout>
+        <Grid Grid.Row="1" HorizontalOptions="Fill" ColumnDefinitions="*,2*,*">
+            <Button x:Name="prevMonth" Text="&lt;" Clicked="prevMonth_Clicked" HorizontalOptions="Start" Grid.Column="0"/>
+            <Label x:Name="currentMonth" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" Grid.Column="1"/>
+            <Button x:Name="nextMonth" Text="&gt;" Clicked="nextMonth_Clicked" HorizontalOptions="End" Grid.Column="2"/>
+        </Grid>
         <Border Grid.Row="2">
         <ScrollView Orientation="Horizontal" >
-            <Grid RowDefinitions="*, *, *, *, *, *, *, *" ColumnDefinitions="*" x:Name="CalendarGrid" HeightRequest="400">
-                    <Border Grid.Row="1" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+            <Grid RowDefinitions="*, *, *, *, *, *, *, *" ColumnDefinitions="*" x:Name="CalendarGrid" HeightRequest="600">
+                    <Border Grid.Row="1" Grid.Column="0" WidthRequest="100" HeightRequest="75">
                         <Label Text="9:00"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </Border>
-                    <Border Grid.Row="2" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                    <Border Grid.Row="2" Grid.Column="0" WidthRequest="100" HeightRequest="75">
                         <Label Text="10:00"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
                         </Border>
-                    <Border Grid.Row="3" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                    <Border Grid.Row="3" Grid.Column="0" WidthRequest="100" HeightRequest="75">
                         <Label Text="11:00"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
                         </Border>
-                    <Border Grid.Row="4" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                    <Border Grid.Row="4" Grid.Column="0" WidthRequest="100" HeightRequest="75">
                         <Label Text="12:00"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </Border>
-                    <Border Grid.Row="5" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                    <Border Grid.Row="5" Grid.Column="0" WidthRequest="100" HeightRequest="75">
                         <Label Text="13:00"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </Border>
-                    <Border Grid.Row="6" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                    <Border Grid.Row="6" Grid.Column="0" WidthRequest="100" HeightRequest="75">
                         <Label Text="14:00"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </Border>
-                    <Border Grid.Row="7" Grid.Column="0" WidthRequest="100" HeightRequest="50">
+                    <Border Grid.Row="7" Grid.Column="0" WidthRequest="100" HeightRequest="75">
                         <Label Text="15:00"  FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </Border>
                 </Grid>
         </ScrollView>
         </Border>
         <Border Grid.Row="3">
-            <Grid ColumnDefinitions="2*, *" RowDefinitions="2*, *, *">
-                <Label x:Name="Subject" Grid.Row="0" Grid.Column="0"/>
-                <Label x:Name="Tutor" Grid.Row="1" Grid.Column="0"/>
-                <Label x:Name="Room" Grid.Row="2" Grid.Column="0"/>
-                <Image x:Name="subjectIcon" Grid.Column="1" Grid.RowSpan="3"/>
+            <Grid ColumnDefinitions="2*, *" RowDefinitions="2*, *, *" Padding="10" BackgroundColor="Blue">
+                <Label x:Name="Subject" Grid.Row="0" Grid.Column="0" TextColor="White" FontAttributes="Bold" FontSize="20"/>
+                <Label x:Name="Tutor" Grid.Row="1" Grid.Column="0" TextColor="White"/>
+                <Label x:Name="Room" Grid.Row="2" Grid.Column="0" TextColor="White"/>
+                <Image x:Name="subjectIcon" Grid.Column="1" Grid.RowSpan="3" BackgroundColor="White"/>
             </Grid>
         </Border>
 

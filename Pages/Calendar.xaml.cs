@@ -62,16 +62,11 @@ public partial class Calendar : ContentPage
         this.subjectIcon.Source = $"{this.Subject.Text}.jpg";
     }
 
-		//prevMonthCLick event
-
-		//NextMonthClick event
-
-
 
 		private void BuildCalendar(DateTime currentCalendarMonth)
 	{
         //https://stackoverflow.com/questions/6286868/convert-month-int-to-month-name
-        currentMonth.Text = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(currentCalendarMonth.Month);
+        currentMonth.Text = $"{CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(currentCalendarMonth.Month)} {selectedYear}";
 
 		int numDays = DateTime.DaysInMonth(currentCalendarMonth.Year, currentCalendarMonth.Month);
 

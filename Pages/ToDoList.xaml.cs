@@ -1,4 +1,5 @@
 ﻿using StudentOrganiser.Classes;
+using Color = System.Drawing.Color;
 
 namespace StudentOrganiser.Pages
 {
@@ -32,6 +33,7 @@ namespace StudentOrganiser.Pages
         {
             private string title = title;
             private List<ToDoListTask> todoTasks = new List<ToDoListTask>();
+            
 
             public void AddTask(ToDoListTask taskToAdd)
             {

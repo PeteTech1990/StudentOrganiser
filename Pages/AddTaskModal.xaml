@@ -2,34 +2,36 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                x:Class="StudentOrganiser.Pages.AddTaskModal">
-    <Grid RowDefinitions="*, *, *, *, *" ColumnDefinitions="* , *" HeightRequest="250" RowSpacing="10" Padding="10">
+    <Border Stroke="Black" StrokeThickness="5" HeightRequest="255">
+    <Grid RowDefinitions="*, *, *, *, *" ColumnDefinitions="* , *" HeightRequest="250" RowSpacing="10" Padding="10" ColumnSpacing="10">
         <Label FontSize="20" Text="Add a Task" HorizontalOptions="Start" Grid.Row="0" Grid.ColumnSpan="1"/>
     
         <Entry x:Name="title" Grid.Row="1" Grid.Column="0" Placeholder="Task title"/>
         
             <HorizontalStackLayout Grid.Row="2" Grid.Column="0">
-                <Label Text="Subject:" HorizontalOptions="Start" VerticalOptions="End"/>
-                <Picker x:Name="subject" />
+                <Label Text="Subject:" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Picker x:Name="subject" WidthRequest="130"/>
             </HorizontalStackLayout>
         
         <Entry x:Name="description" Grid.Row="3" Grid.Column="0" Placeholder="Task description"/>
     
         <HorizontalStackLayout Grid.Row="1" Grid.Column="1">
-            <Label Text="Due Date:" HorizontalOptions="Start" VerticalOptions="End"/>
-            <DatePicker x:Name="duedate" HorizontalOptions="End" VerticalOptions="End"/>
+            <Label Text="Due Date:" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <DatePicker x:Name="duedate" HorizontalOptions="End" VerticalOptions="Center" WidthRequest="100"/>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout Grid.Row="2" Grid.Column="1">
-            <Label Text="Recurrence:" HorizontalOptions="Start" VerticalOptions="End"/>
-            <Picker x:Name="recurrence"/>
+            <Label Text="Recurrence:" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Picker x:Name="recurrence" WidthRequest="100"/>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout  Grid.Row="3" Grid.Column="1">
-            <Label Text="Importance:" HorizontalOptions="Start" VerticalOptions="End"/>
-            <Picker x:Name="importance"/>
+            <Label Text="Importance:" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Picker x:Name="importance" WidthRequest="100"/>
         </HorizontalStackLayout>
 
         <Button Text="Add" BackgroundColor="Blue" Clicked="AddTask" Grid.Row="4" Grid.Column="1" WidthRequest="70" HorizontalOptions="End"></Button>
 
     </Grid>
+    </Border>
 </ContentPage>

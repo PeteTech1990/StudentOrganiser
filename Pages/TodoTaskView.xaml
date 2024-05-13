@@ -8,8 +8,8 @@
             <Setter Property="HeightRequest" Value="75"/>
         </Style>
     </ContentView.Resources>
-    <Border x:Name="TaskBorder" Stroke="Black" StrokeThickness="2">
-        <Grid x:Name="TaskView" Padding="10" Style="{StaticResource TaskLayout}" RowDefinitions="*,*" ColumnDefinitions="*,3*,*">
+    <Border x:Name="TaskBorder" Stroke="Black" StrokeThickness="2" Padding="5">
+        <Grid x:Name="TaskView" Padding="10" Style="{StaticResource TaskLayout}" RowDefinitions="*,*" ColumnDefinitions="*,2.5*,*">
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnTapTask"></TapGestureRecognizer>
         </Grid.GestureRecognizers>
@@ -59,7 +59,8 @@
             <Label 
             x:Name="TaskRecurrence"            
             VerticalOptions="End" 
-            HorizontalOptions="Start"/>
+            HorizontalOptions="Start"
+                />
         </HorizontalStackLayout>
         </Grid>
     </Border>

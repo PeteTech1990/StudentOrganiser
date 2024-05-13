@@ -3,15 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganiser.Pages.StudentID">
     
-    <Grid RowDefinitions="50, 50, *, 100" ColumnDefinitions="*" RowSpacing="30">
+    <Grid RowDefinitions="50, 50, *, 100" ColumnDefinitions="*" RowSpacing="30" Margin="10">
         <Label Text="Student ID" Background="Blue" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
-        <Button TextColor="Blue" Text="🔄" Clicked="RefreshQrCode" HeightRequest="50" WidthRequest="50" Grid.Row="1" HorizontalOptions="End" FontSize="20"/>
-        <Image x:Name="qrCode" Grid.Row="2" WidthRequest="400" HeightRequest="400"/>
+        <Button TextColor="Blue" Text="🔄" Clicked="RefreshQrCode" HeightRequest="50" WidthRequest="50" Grid.Row="1" HorizontalOptions="End" FontSize="20" BackgroundColor="LightGray"/>
+        <Image x:Name="qrCode" Grid.Row="2" WidthRequest="350" HeightRequest="350"/>
 
-
-        <Border Grid.Row="3" Stroke="Black" HorizontalOptions="Center" VerticalOptions="Center">
-            <Label x:Name="studentInfo" Text="22116948 - Peter Griffiths" FontSize="20" BackgroundColor="LightGray" Padding="10"></Label>
-        </Border>
+        <Grid ColumnDefinitions="*,*" Grid.Row="3">
+            <Border Grid.Column="0" Stroke="Black" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="175">
+                <Label x:Name="studentName" Text="Peter Griffiths" FontSize="20" TextColor="Blue" Padding="10" HorizontalTextAlignment="Center"></Label>
+            </Border>
+            <Border Grid.Column="1" Stroke="Black" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="175">
+                <Label x:Name="studentIDNumber" Text="22116948" FontSize="20" TextColor="Blue" Padding="10" HorizontalTextAlignment="Center"></Label>
+            </Border>
+        </Grid>
 
     </Grid>
 </ContentPage>

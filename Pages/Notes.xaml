@@ -3,24 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentOrganiser.Pages.Notes"
              >
+    <Grid RowDefinitions="9*, *">
     <ScrollView>
-    <Grid RowDefinitions="50, 50, *, 50" ColumnDefinitions="*">
-        <Label Text="Notes" Background="Blue" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
-        <HorizontalStackLayout Grid.Row="1">
-            <Label x:Name="sortLabel" HorizontalOptions="Start"/>
-            <Picker Title="view" x:Name="sortSelect" HorizontalOptions="End" SelectedIndexChanged="SortSelectionChanged"/>
-        </HorizontalStackLayout>
-        <VerticalStackLayout Spacing="15" Padding="20" x:Name="allNotes" Grid.Row="2">
+        <Grid RowDefinitions="50, 50, *, 50" ColumnDefinitions="*">
+            <Label Text="Notes" Background="Blue" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
+            <Grid Grid.Row="1" ColumnDefinitions="*, *" HorizontalOptions="Fill" Margin="10">
+                <HorizontalStackLayout Grid.Column="0">
+                    <Picker Title="view" x:Name="sortSelect" HorizontalOptions="Start" VerticalOptions="Fill" SelectedIndexChanged="SortSelectionChanged" HeightRequest="40"/>
+                    <Label Text="🔽" VerticalOptions="Center"></Label>
+                </HorizontalStackLayout>
+                <Label x:Name="sortLabel" HorizontalOptions="End" VerticalOptions="Fill" Grid.Column="1"/>
+
+            </Grid>
+            <VerticalStackLayout Spacing="15" x:Name="allNotes" Grid.Row="2">
 
 
-        </VerticalStackLayout>
-        <Button x:Name = "AddNote"
+            </VerticalStackLayout>
+
+        </Grid>
+    </ScrollView>
+
+    <Button x:Name = "AddNote"
              Text="+"
              HorizontalOptions="End"
-             VerticalOptions="End"
-             Grid.Row="2"
+VerticalOptions="End"
+Grid.Row="2"
+HeightRequest="70"
+WidthRequest="70"
+Margin="10"
+FontSize="Large"
              />
-
     </Grid>
-    </ScrollView>
 </ContentPage>
