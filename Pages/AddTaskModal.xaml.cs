@@ -36,8 +36,9 @@ public partial class AddTaskModal : ContentPage
 
     public async void AddTask(object sender, EventArgs e)
     {
-        await App.databaseConnector.AddTaskToDatabase(title.Text, description.Text, importanceValues[importance.SelectedItem.ToString()],((Subject)subject.SelectedItem).GetID(), duedate.Date, recurrenceValues[recurrence.SelectedItem.ToString()]);
-             
+        int taskID = await App.databaseConnector.AddTaskToDatabase(title.Text, description.Text, importanceValues[importance.SelectedItem.ToString()],((Subject)subject.SelectedItem).GetID(), duedate.Date, recurrenceValues[recurrence.SelectedItem.ToString()]);
+
+                
         await Navigation.PopModalAsync();
     }
 }

@@ -15,6 +15,8 @@ namespace StudentOrganiser.Pages;
 
 public partial class StudentID : ContentPage
 {
+    //Inspiration for QR code API functionality: (Denso Wave Incorporated, no date)
+
     private readonly string apiURL = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&format=png&data=";
     private string myID = "22116948";
 

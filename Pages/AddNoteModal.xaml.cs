@@ -53,6 +53,8 @@ public partial class AddNoteModal : ContentPage
 
     }
 
+    //Inspiration for use of MediaElement for playing Audio and Video: (Versluis, 2023)
+
     private void NavTo(object sender, EventArgs e)
     {
         System.Threading.Thread.Sleep(1000);

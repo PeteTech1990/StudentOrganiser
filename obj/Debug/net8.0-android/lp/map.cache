@@ -25,6 +25,7 @@ Microsoft.Maui.dll
 Microsoft.Maui.Essentials.dll
 Microsoft.Maui.Graphics.dll
 Microsoft.Maui.Maps.dll
+Plugin.LocalNotification.dll
 Plugin.Maui.Audio.dll
 SQLitePCLRaw.batteries_v2.dll
 SQLitePCLRaw.lib.e_sqlite3.android.dll
@@ -108,6 +109,7 @@ Xamarin.Google.Guava.FailureAccess.dll
 Xamarin.Google.Guava.ListenableFuture.dll
 Xamarin.GooglePlayServices.Base.dll
 Xamarin.GooglePlayServices.Basement.dll
+Xamarin.GooglePlayServices.Location.dll
 Xamarin.GooglePlayServices.Maps.dll
 Xamarin.GooglePlayServices.Tasks.dll
 Xamarin.Jetbrains.Annotations.dll
@@ -213,9 +215,11 @@ Xamarin.Google.Crypto.Tink.Android.aar
 Xamarin.Google.ErrorProne.Annotations.aar
 play-services-base.aar
 play-services-basement.aar
+play-services-location.aar
 play-services-maps.aar
 play-services-tasks.aar
 playservicesbasement-18.2.0.aar
 playservicestasks-18.0.2.aar
 playservicesbase-18.2.0.aar
 playservicesmaps-18.1.0.aar
+playserviceslocation-21.0.1.aar

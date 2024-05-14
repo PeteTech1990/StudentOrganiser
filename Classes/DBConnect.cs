@@ -122,7 +122,7 @@ namespace StudentOrganiser.Classes
         /// that the task recurs every day and a value of 7 means the task recurs every week.</param>
         /// <returns>The method returns a "Threading.Tasks.Task" object, representing the thread that this asynchronous task
         /// is being executed on.</returns>
-        public async Task AddTaskToDatabase(string title, string description, bool importance, int subjectID, DateTime dueDate, int recurrenceAddition)
+        public async Task<int> AddTaskToDatabase(string title, string description, bool importance, int subjectID, DateTime dueDate, int recurrenceAddition)
         {
             ///Call the Init method to instantiate the database connection object, if not already instantiated, and create the database tables, if 
             ///not already created
@@ -131,8 +131,11 @@ namespace StudentOrganiser.Classes
             ///First, create a new "ToDoListTask" object, using the 6 passed parameters as the properties of the new object.
             ///Then, using the "InsertASync" method of the "connAsync" object, insert a new record into the "ToDoListTask" table in the SQLite database, using the properties of the
             ///new ToDoListTask object as the values of the record.
-            await connAsync.InsertAsync(new ToDoListTask { taskTitle = title, taskDescription = description, taskImportance = importance, subjectID = subjectID, taskDueDate = dueDate, recurrenceAddition = recurrenceAddition });
-
+            ///
+            ToDoListTask newTask = new ToDoListTask { taskTitle = title, taskDescription = description, taskImportance = importance, subjectID = subjectID, taskDueDate = dueDate, recurrenceAddition = recurrenceAddition };
+            
+            await connAsync.InsertAsync(newTask);
+            return newTask.GetID();
 
         }
 
