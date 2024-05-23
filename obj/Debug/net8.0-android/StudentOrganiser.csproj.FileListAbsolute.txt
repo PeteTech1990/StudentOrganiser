@@ -1259,3 +1259,5 @@ C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-androi
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\src\plugin\LocalNotification\NotificationActionReceiver.java
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\android\src\plugin\LocalNotification\ScheduledAlarmReceiver.java
 C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\mauiimage.outputs
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\_CompileBindingJava.FileList.txt
+C:\Users\Home\source\repos\PeteTech1990\StudentOrganiser\obj\Debug\net8.0-android\_CompileJava.FileList.txt

@@ -34,9 +34,43 @@ public partial class AddNoteModal : ContentPage
 
     public async void AddNote(object sender, EventArgs e)
     {
-        await App.databaseConnector.AddNoteToDatabase(title.Text, text.Text, ((Subject)subject.SelectedItem).GetID(), audioPath, videoPath, DateTime.Now, Convert.ToInt32(noteID));
-             
-        await Navigation.PopModalAsync();
+        try
+        {
+            ValidateInputs();
+
+            await App.databaseConnector.AddNoteToDatabase(title.Text, text.Text, ((Subject)subject.SelectedItem).GetID(), audioPath, videoPath, DateTime.Now, Convert.ToInt32(noteID));
+
+            await Navigation.PopModalAsync();
+        }
+        catch(Exception ex)
+        {
+            await DisplayAlert("Error", ex.Message, "OK");
+        }
+    }
+
+    private void ValidateInputs()
+    {
+        string? errorMessage = null;
+        if (title.Text == "" || title.Text == null)
+        {
+            throw new Exception("Note title cannot be empty. Please enter a note title.");
+        }
+        else if (title.Text.Length > 15)
+        {
+            throw new Exception("Note title cannot be more than 15 characters long. Please enter a shorter note title.");
+        }
+        else if (subject.SelectedItem == null)
+        {
+            throw new Exception("Subject cannot be empty. Please choose a subject for this note.");
+        }
+        else if (text.Text == "" || text.Text == null)
+        {
+            throw new Exception("Note text cannot be empty. Please enter descriptive text for this note");
+        }
+        else if (text.Text.Length > 100)
+        {
+            throw new Exception("Note text cannot be more than 100 characters long. Please enter a shorter note.");
+        }
     }
 
     public async void OpenAudioModal(object sender, EventArgs e)

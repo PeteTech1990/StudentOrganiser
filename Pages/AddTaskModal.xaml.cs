@@ -36,9 +36,45 @@ public partial class AddTaskModal : ContentPage
 
     public async void AddTask(object sender, EventArgs e)
     {
-        int taskID = await App.databaseConnector.AddTaskToDatabase(title.Text, description.Text, importanceValues[importance.SelectedItem.ToString()],((Subject)subject.SelectedItem).GetID(), duedate.Date, recurrenceValues[recurrence.SelectedItem.ToString()]);
+        try
+        {
+            ValidateInputs();
+            int taskID = await App.databaseConnector.AddTaskToDatabase(title.Text, description.Text, importanceValues[importance.SelectedItem.ToString()], ((Subject)subject.SelectedItem).GetID(), duedate.Date, recurrenceValues[recurrence.SelectedItem.ToString()]);
+            await Navigation.PopModalAsync();
+        }
+        catch(Exception ex)
+        {
+            await DisplayAlert("Error", ex.Message, "OK");
+        }
 
-                
-        await Navigation.PopModalAsync();
+    }
+
+    private void ValidateInputs()
+    {
+        string? errorMessage = null;
+        if(title.Text == "" || title.Text == null)
+        {
+            throw new Exception("Task title cannot be empty. Please enter a task title.");
+        }        
+        else if(title.Text.Length > 30)
+        {
+            throw new Exception("Task title cannot be more than 30 characters long. Please enter a shorter task title.");
+        }
+        else if(duedate.Date < DateTime.Now)
+        {
+            throw new Exception("Cannot set a due date for a task earlier than today. Please enter the due date as today or later.");
+        }
+        else if(subject.SelectedItem == null)
+        {
+            throw new Exception("Subject cannot be empty. Please choose a subject for this task.");
+        }
+        else if(description.Text == "" || description.Text == null)
+        {
+            throw new Exception("Task description cannot be empty. Please enter a task description");
+        }
+        else if (description.Text.Length > 60)
+        {
+            throw new Exception("Task description cannot be more than 60 characters long. Please enter a shorter task description.");
+        }
     }
 }

@@ -64,8 +64,24 @@ public partial class AddAudioToNoteModal : ContentPage
 
     private async void SaveAudioFile(object sender, EventArgs e)
     {
-		if (_audioPlayer != null) _audioPlayer.Dispose();
-		
-		await Navigation.PopModalAsync();
+		if (_audioPlayer != null)
+		{
+			if (_audioPlayer.IsPlaying)
+			{
+                _audioPlayer.Stop();
+                
+            }
+            _audioPlayer.Dispose();
+
+            
+			
+		}
+
+        if (_audioRecorder.IsRecording)
+        {
+            recording = await _audioRecorder.StopAsync();
+        }
+
+        await Navigation.PopModalAsync();
     }
 }

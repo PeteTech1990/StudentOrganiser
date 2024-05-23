@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hULH7E54z3R1pNXpAQYqsLsroDz0ETJ40kQy8BDVMyG2/AKZ5dbzHy6BmqYh4aplUyKZNVjZgS99W9clW+qe0w==",
+  "dgSpecHash": "NLoQpV/kSSI=",
   "success": true,
   "projectFilePath": "C:\\Users\\Home\\source\\repos\\PeteTech1990\\StudentOrganiser\\StudentOrganiser.csproj",
   "expectedPackageFiles": [
@@ -58,12 +58,12 @@
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\8.0.40\\microsoft.maui.graphics.win2d.winui.desktop.8.0.40.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.maui.maps\\8.0.40\\microsoft.maui.maps.8.0.40.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.maui.resizetizer\\8.0.40\\microsoft.maui.resizetizer.8.0.40.nupkg.sha512",
-    "C:\\Users\\Home\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.3\\microsoft.net.illink.tasks.8.0.3.nupkg.sha512",
+    "C:\\Users\\Home\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.5\\microsoft.net.illink.tasks.8.0.5.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.toolkit.uwp.notifications\\7.1.3\\microsoft.toolkit.uwp.notifications.7.1.3.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
+    "C:\\Users\\Home\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.windowsappsdk\\1.5.240311000\\microsoft.windowsappsdk.1.5.240311000.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\netextensions.infra.sqlite\\1.0.3-preview.3.20181.2\\netextensions.infra.sqlite.1.0.3-preview.3.20181.2.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\netextensions.infra.sqlitebrowser\\1.0.6\\netextensions.infra.sqlitebrowser.1.0.6.nupkg.sha512",

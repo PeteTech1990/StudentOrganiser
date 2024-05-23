@@ -74,32 +74,41 @@ public partial class AddVideoToNoteModal : ContentPage
     {
 		string? result = null;
 
-        result = await GetYoutubeURL();
+        try
+        {
+            result = await GetYoutubeURL();
 
 
-        if (result != null)
+
+
+            if (result != null)
+            {
+
+                if (await Permissions.RequestAsync<Permissions.StorageWrite>() == PermissionStatus.Granted)
+                {
+                    string filePath = FileSystem.AppDataDirectory + $"/{noteID}.txt";
+
+                    File.CreateText(filePath).Dispose();
+
+                    await File.WriteAllTextAsync(FileSystem.AppDataDirectory + $"/{noteID}.txt", result);
+
+
+                }
+
+                if (File.Exists(FileSystem.AppDataDirectory + $"/{noteID}.txt"))
+                {
+                    WebView youtubeVideoViewer = new WebView();
+                    youtubeVideoViewer.Source = File.ReadAllText(FileSystem.AppDataDirectory + $"/{noteID}.txt");
+                    youtubeVideoViewer.HeightRequest = 250;
+                    this.MediaView.Content = youtubeVideoViewer;
+
+
+                }
+            }
+        }
+        catch (Exception ex)
         {
 
-            if (await Permissions.RequestAsync<Permissions.StorageWrite>() == PermissionStatus.Granted)
-            {
-                string filePath = FileSystem.AppDataDirectory + $"/{noteID}.txt";
-
-                File.CreateText(filePath).Dispose();
-
-                await File.WriteAllTextAsync(FileSystem.AppDataDirectory + $"/{noteID}.txt", result);
-                
-                
-            }
-
-            if (File.Exists(FileSystem.AppDataDirectory + $"/{noteID}.txt"))
-            {
-                WebView youtubeVideoViewer = new WebView();
-                youtubeVideoViewer.Source = File.ReadAllText(FileSystem.AppDataDirectory + $"/{noteID}.txt");
-                youtubeVideoViewer.HeightRequest = 250;
-                this.MediaView.Content = youtubeVideoViewer;
-                
-                
-            }
         }
 
 
@@ -108,6 +117,22 @@ public partial class AddVideoToNoteModal : ContentPage
 
     private async Task<string?> GetYoutubeURL()
     {
-        return await DisplayPromptAsync("Youtube URL", "Paste a Youtube URL");                
+        string result = await DisplayPromptAsync("Youtube URL", "Paste a Youtube URL");
+        if (result == null || result == "")
+        {
+            throw new Exception("URL value cannot be blank. Please enter a URL");
+        }
+        else if (result.Length > 100)
+        {
+            throw new Exception("URL value cannot be longer than 100 characters. Please enter a shorter URL");
+        }
+        else if (!result.Contains("www.youtube.com/embed"))
+        {
+            throw new Exception("URL must be a valid YouTube embed URL. Please enter an embed URL");
+        }
+        else
+        {
+            return result;
+        }
     }
 }
